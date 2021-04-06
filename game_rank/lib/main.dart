@@ -14,6 +14,13 @@ class GameRank extends StatefulWidget {
 class _GameRankState extends State<GameRank> {
 
   int counter = 0;
+  int count_index = 0;
+
+
+  List names = ["Rachiron" , "Alphakiller" , "ChronicSeer"];
+  List current_ranks = [1,2,3];
+  List email_ids = ["dasrachiron@gmail.com" , "rohitjoshi0632@gmail.com" ,"ninaddragon@gmail.com"];
+  List images = ["images/pfp-atharv.png" , "images/pfp-rohit.jpg","images/pfp-ninad.jpg"];
 
   @override
   Widget build(BuildContext context) {
@@ -33,7 +40,7 @@ class _GameRankState extends State<GameRank> {
         children: [
           Center(
             child: CircleAvatar(
-              backgroundImage: AssetImage('images/pfp.png'),
+              backgroundImage: AssetImage(images[count_index]),
               radius: 50.0,
             ),
           ),
@@ -52,7 +59,7 @@ class _GameRankState extends State<GameRank> {
           SizedBox(height: 10.0,),
 
           Text(
-            'Rachiron',
+            '${names[count_index]}',
             style: TextStyle(
               fontSize: 30.0,
               color: Colors.amberAccent,
@@ -75,7 +82,7 @@ class _GameRankState extends State<GameRank> {
           SizedBox(height: 10.0,),
 
           Text(
-            '$counter',
+            '${current_ranks[count_index]}',
             style: TextStyle(
               fontSize: 30.0,
               color: Colors.amberAccent,
@@ -96,7 +103,7 @@ class _GameRankState extends State<GameRank> {
               SizedBox(width: 10.0,),
 
               Text(
-                "dasrachiron@gmail.com",
+                "${email_ids[count_index]}",
                 style: TextStyle(
                   fontSize: 16.0,
                   color: Colors.deepPurple[50],
@@ -112,12 +119,13 @@ class _GameRankState extends State<GameRank> {
 
       floatingActionButton: FloatingActionButton(
         child: Icon(
-          Icons.add,
+          Icons.arrow_forward_ios_outlined,
         ),
         backgroundColor: Colors.deepPurple[800],
         onPressed: (){
           setState(() {
             counter +=1;
+            count_index = counter % 3;
           });
         },
         elevation: 0.5,
