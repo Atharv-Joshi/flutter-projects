@@ -10,10 +10,10 @@ Save to Favorites feature is available.
 
 Photo:
 
-![App SS 1](E:\flutter-projects\startup_name_generator\screenshots\1.png)
+![App SS 1](screenshots\1.png)
 
-![App SS 2](E:\flutter-projects\startup_name_generator\screenshots\2.png)
+![App SS 2](\screenshots\2.png)
 
 Demo Video:
 
-![App Demo gif](E:\flutter-projects\startup_name_generator\screenshots\app-video)
+![App Demo gif](screenshots\app-video)
