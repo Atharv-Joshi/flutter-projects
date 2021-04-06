@@ -13,14 +13,22 @@ class Home_page extends StatelessWidget {
         centerTitle: true,
         backgroundColor: Colors.red[600],
       ),
-      body: Center(
-        child: ElevatedButton.icon(
-        onPressed: (){},
-        icon: Icon(
-          Icons.access_alarm
+      body: Row(
+        children: [Container(
+          padding: EdgeInsets.all(30),
+          color: Colors.cyan,
+          child: Text('1'),
         ),
-        label: Text('alarm'),
-        )
+          Container(
+            padding: EdgeInsets.all(30),
+            color: Colors.pink,
+            child: Text('2'),
+          ),
+          Container(
+            padding: EdgeInsets.all(30),
+            color: Colors.green,
+            child: Text('3'),
+          )],
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {},
