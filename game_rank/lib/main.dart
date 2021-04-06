@@ -6,7 +6,15 @@ void main() {
   ));
 }
 
-class GameRank extends StatelessWidget {
+class GameRank extends StatefulWidget {
+  @override
+  _GameRankState createState() => _GameRankState();
+}
+
+class _GameRankState extends State<GameRank> {
+
+  int counter = 0;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -67,7 +75,7 @@ class GameRank extends StatelessWidget {
           SizedBox(height: 10.0,),
 
           Text(
-            '4',
+            '$counter',
             style: TextStyle(
               fontSize: 30.0,
               color: Colors.amberAccent,
@@ -102,6 +110,17 @@ class GameRank extends StatelessWidget {
       ),
     ),
 
+      floatingActionButton: FloatingActionButton(
+        child: Icon(
+          Icons.add,
+        ),
+        backgroundColor: Colors.deepPurple[800],
+        onPressed: (){
+          setState(() {
+            counter +=1;
+          });
+        }
+      ),
     );
   }
 }
