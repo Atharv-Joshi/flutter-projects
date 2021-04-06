@@ -119,7 +119,8 @@ class _GameRankState extends State<GameRank> {
           setState(() {
             counter +=1;
           });
-        }
+        },
+        elevation: 0.5,
       ),
     );
   }
