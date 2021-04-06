@@ -1,16 +1,19 @@
-# Startup_name_generator
+# Startup Name Generator
 
 A new Flutter application.
 
-## Getting Started
+This App generates random names for startups with the help of random_words package.
 
-This project is a starting point for a Flutter application.
+These words are generated infinitely.
 
-A few resources to get you started if this is your first Flutter project:
+Save to Favorites feature is available.
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
+Photo:
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+![1](https://user-images.githubusercontent.com/53505850/113706117-ece01c00-96fb-11eb-8f0d-16c77f6a8d65.png)
+
+![2](https://user-images.githubusercontent.com/53505850/113706160-fbc6ce80-96fb-11eb-918c-6f3b5190dd8e.png)
+
+Demo Video:
+
+![app-video](https://user-images.githubusercontent.com/53505850/113705515-2401fd80-96fb-11eb-9604-8b3b818db08f.gif)
