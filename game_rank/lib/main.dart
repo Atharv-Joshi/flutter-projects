@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'profiles.dart';
 
 void main() {
   runApp(MaterialApp(
@@ -15,6 +16,12 @@ class _GameRankState extends State<GameRank> {
 
   int counter = 0;
   int count_index = 0;
+
+  List<Profile> profiles  = [
+                              Profile(username: 'Rachiron' , gamer_rank: '1' , img_loc: "images/pfp-atharv.png" , email: "dasrachiron@gmail.com" ),
+                              Profile(username: 'Alphakiller' , gamer_rank: '2' , img_loc: "images/pfp-rohit.jpg"  , email:"rohitjoshi0632@gmail.com"),
+                              Profile(username: 'ChronicSeer' , gamer_rank: '3' , img_loc: "images/pfp-ninad.jpg"  , email:"ninaddragon@gmail.com")
+                              ];
 
 
   List names = ["Rachiron" , "Alphakiller" , "ChronicSeer"];
@@ -40,7 +47,7 @@ class _GameRankState extends State<GameRank> {
         children: [
           Center(
             child: CircleAvatar(
-              backgroundImage: AssetImage(images[count_index]),
+              backgroundImage: AssetImage(profiles[count_index].img_loc),
               radius: 50.0,
             ),
           ),
@@ -59,7 +66,7 @@ class _GameRankState extends State<GameRank> {
           SizedBox(height: 10.0,),
 
           Text(
-            '${names[count_index]}',
+            '${profiles[count_index].username}',
             style: TextStyle(
               fontSize: 30.0,
               color: Colors.amberAccent,
@@ -82,7 +89,7 @@ class _GameRankState extends State<GameRank> {
           SizedBox(height: 10.0,),
 
           Text(
-            '${current_ranks[count_index]}',
+            '${profiles[count_index].gamer_rank}',
             style: TextStyle(
               fontSize: 30.0,
               color: Colors.amberAccent,
@@ -103,7 +110,7 @@ class _GameRankState extends State<GameRank> {
               SizedBox(width: 10.0,),
 
               Text(
-                "${email_ids[count_index]}",
+                "${profiles[count_index].email}",
                 style: TextStyle(
                   fontSize: 16.0,
                   color: Colors.deepPurple[50],
