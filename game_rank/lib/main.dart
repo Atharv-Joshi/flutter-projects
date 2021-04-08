@@ -37,7 +37,7 @@ class _GameRankState extends State<GameRank> {
         title: Text('Gamer Rank'),
         centerTitle: true,
         backgroundColor: Colors.deepPurple[400],
-        elevation: 0.0,
+        elevation: 3.0,
       ),
 
     body: Padding(
