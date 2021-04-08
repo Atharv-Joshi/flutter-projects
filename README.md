@@ -1,6 +1,6 @@
 # Flutter Projects:
 
-1 [My-APP](https://github.com/Atharv-Joshi/flutter-projects/tree/master/my_app) 
+1 [World Timer](https://github.com/Atharv-Joshi/flutter-projects/tree/master/world_time) 
 
 2 [Startup Name Generator](https://github.com/Atharv-Joshi/flutter-projects/tree/master/startup_name_generator)
 
