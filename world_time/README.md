@@ -1,16 +1,38 @@
-# world_time
+# World Time
 
-A new Flutter application.
+This App shows the current local time of places around the world.
 
-## Getting Started
+It has 3 screens :
 
-This project is a starting point for a Flutter application.
+1  The Loading Screen  : This is where data is loaded from the API . 
+                  
+2  The Location Screen : This screen has a ListView where all currently available locations are present.
+                  
+3  The Home Screen     : The Time for  selected time zone is displayed here along with its name and a day/night background image according to the time.
 
-A few resources to get you started if this is your first Flutter project:
+This Application uses the [timezonedb](https://timezonedb.com/api) API.
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
+I planned to include  flag images too but couldnt find a efficient way to do it yet.
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+Loading Screen :
+
+![loading](https://user-images.githubusercontent.com/53505850/114239316-8ed56200-99a3-11eb-889f-0bd9a40a4188.png)
+
+Location Screen :
+
+![location](https://user-images.githubusercontent.com/53505850/114239461-bfb59700-99a3-11eb-875a-dca07733a3be.png)
+
+Home Screen : 
+
+1 Night Time :
+
+![home1](https://user-images.githubusercontent.com/53505850/114239487-c80dd200-99a3-11eb-9a2c-535bc0496652.png)
+
+2 Day Time :
+
+![home2](https://user-images.githubusercontent.com/53505850/114239524-d0fea380-99a3-11eb-83ee-899953871061.png)
+
+
+Gif:
+
+![vidgif](https://user-images.githubusercontent.com/53505850/114239972-6ac65080-99a4-11eb-82f1-357758b71021.gif)
