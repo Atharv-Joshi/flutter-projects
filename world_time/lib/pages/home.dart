@@ -35,13 +35,13 @@ class _HomeState extends State<Home> {
              children: [
                TextButton.icon(
                    onPressed: () async {
-                     dynamic result = await Navigator.pushNamed(context, '/location');
+                     await Navigator.pop(context);
                      setState(() {
                        data = {
-                         'finalTime' : result['finalTime'],
-                         'flag' : result['flag'],
-                         'isDaytime' : result['isDaytime'],
-                         'zoneName' : result['zoneName'],
+                         'finalTime' : data['finalTime'],
+                         // 'flag' : result['flag'],
+                         'isDaytime' : data['isDaytime'],
+                         'zoneName' : data['zoneName'],
                        };
                      });
                    },

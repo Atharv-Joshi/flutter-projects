@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:world_time/services/world_time.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'dart:convert';
+import 'package:http/http.dart';
 
 class Loading extends StatefulWidget {
 
@@ -12,39 +14,44 @@ class _LoadingState extends State<Loading> {
 
   List<WorldTime> locations = [];
 
-  void setupWorldTime() async {
-    WorldTime instance = WorldTime(flag:'germany.png' , zoneName: 'Europe/Berlin');
+  void timeZoneList() async  {
+    Response response1 = await get(Uri.parse('https://api.timezonedb.com/v2.1/list-time-zone?key=9T71J9W5UMLO&format=json&by=zone'));
+    dynamic jsonMap = jsonDecode(response1.body);
 
-    await instance.getTime();
+    List timeZoneList = jsonMap['zones'];
 
-    Navigator.pushReplacementNamed(context, '/home' , arguments: {
-      'zoneName' : instance.zoneName,
-      'finalTime' : instance.finalTime,
-      'flag' : instance.flag,
-      'isDaytime' : instance.isDaytime
-    });
+    for(int i = 0 ;  i < timeZoneList.length ; i++){
+      locations.add(WorldTime(flag: 'comingsoon.png' , zoneName: timeZoneList[i]['zoneName']));
+
+      Navigator.pushReplacementNamed(context, '/location' , arguments: {
+            'locations' : locations
+          });
+    }
   }
-
 
   @override
   void initState() {
     super.initState();
-    setupWorldTime();
-
+    timeZoneList();
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Center(
-        child: SpinKitThreeBounce(
-          color: Colors.black,
-          size: 30.0,
+      body: Container(
+        margin: EdgeInsets.fromLTRB(0, 300, 0, 0),
+        child: Center(
+          child: Column(
+            children: [SpinKitThreeBounce(
+              color: Colors.black,
+              size: 30.0,
+            ),
+            Text('loading...')],
+          )
         ),
       ),
     );
   }
-
 }
 
 
