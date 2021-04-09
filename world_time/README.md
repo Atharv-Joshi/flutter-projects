@@ -4,11 +4,11 @@ This App shows the current local time of places around the world.
 
 It has 3 screens :
 
-1  The Loading Screen  : This is where data is loaded from the API . 
+1  **The Loading Screen**  : This is where data is loaded from the API . 
                   
-2  The Location Screen : This screen has a ListView where all currently available locations are present.
+2  **The Location Screen** : This screen has a ListView where all currently available locations are present.
                   
-3  The Home Screen     : The Time for  selected time zone is displayed here along with its name and a day/night background image according to the time.
+3  **The Home Screen**     : The Time for  selected time zone is displayed here along with its name and a day/night background image according to the time.
 
 This Application uses the [timezonedb](https://timezonedb.com/api) API.
 
