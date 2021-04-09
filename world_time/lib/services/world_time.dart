@@ -2,43 +2,38 @@ import 'package:http/http.dart';
 import 'dart:convert';
 import 'package:intl/intl.dart';
 
-class WorldTime{
-  String location;
-  String time;
-  String flag;
-  String url;
-  bool isDaytime = true ;
 
-  WorldTime({this.flag,this.location,this.url});
+class WorldTime{
+  String flag;
+  String zoneName;
+  bool isDaytime = true ;
+  var finalTime;
+
+
+
+
+  WorldTime({this.flag,this.zoneName});
 
   Future<void> getTime() async {
 
     try{
-      Response response = await get(Uri.parse('https://worldtimeapi.org/api/timezone/$url'));
+
+      Response response = await get(Uri.parse('https://api.timezonedb.com/v2.1/get-time-zone?key=9T71J9W5UMLO&format=json&by=zone&zone=$zoneName'));
       Map data = jsonDecode(response.body);
+      DateTime time = DateTime.parse(data['formatted']);
 
-      String datetime = data['datetime'];
-      String OffsetHours = data['utc_offset'].substring(1,3);
-      String OffsetMinutes = data['utc_offset'].substring(4,6);
+      finalTime = DateFormat.Hms().format(time);
 
-
-      DateTime now = DateTime.parse(datetime);
-      now = now.add(Duration(hours: int.parse(OffsetHours) , minutes: int.parse(OffsetMinutes)));
-
-
-      isDaytime = now.hour > 6 && now.hour < 19 ? true : false ;
-      time = DateFormat.jm().format(now);
-
-
+      isDaytime = time.hour > 6 && time.hour < 19 ? true : false ;
 
     }
 
     catch(e){
+
       print('error $e');
-      time = "could not get time";
+      finalTime  = "could not get time";
+
     }
-
-
 
   }
 

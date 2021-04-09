@@ -10,22 +10,26 @@ class Loading extends StatefulWidget {
 
 class _LoadingState extends State<Loading> {
 
+  List<WorldTime> locations = [];
+
   void setupWorldTime() async {
-    WorldTime instance = WorldTime(location: 'Berlin' , url: 'Asia/Seoul', flag :'germany.png');
+    WorldTime instance = WorldTime(flag:'germany.png' , zoneName: 'Europe/Berlin');
+
     await instance.getTime();
+
     Navigator.pushReplacementNamed(context, '/home' , arguments: {
-      'location' : instance.location,
-      'time' : instance.time,
+      'zoneName' : instance.zoneName,
+      'finalTime' : instance.finalTime,
       'flag' : instance.flag,
       'isDaytime' : instance.isDaytime
     });
   }
 
+
   @override
   void initState() {
     super.initState();
     setupWorldTime();
-
 
   }
 
@@ -42,3 +46,10 @@ class _LoadingState extends State<Loading> {
   }
 
 }
+
+
+
+
+
+
+

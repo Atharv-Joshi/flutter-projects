@@ -15,24 +15,12 @@ class _HomeState extends State<Home> {
   Widget build(BuildContext context) {
 
     data = data.isNotEmpty? data : ModalRoute.of(context).settings.arguments;
-    // String bgImg = 'day.png';
-    // Color bgColor ;
 
-
-
-    // try{
     String bgImg = data['isDaytime'] ? 'day.png' : 'night.png';
-      // bgColor = data['isDaytime'] ? Colors.blue[300] : Colors.blue[900];
-    // }
-    // catch(e){
-    //   print(e);
-    //   data['time'] = 'Website down';
-    //
-    // }
 
 
     return Scaffold(
-      // backgroundColor: bgColor ,
+
        body: Container(
          decoration: BoxDecoration(
            image: DecorationImage(
@@ -50,10 +38,10 @@ class _HomeState extends State<Home> {
                      dynamic result = await Navigator.pushNamed(context, '/location');
                      setState(() {
                        data = {
-                         'time' : result['time'],
+                         'finalTime' : result['finalTime'],
                          'flag' : result['flag'],
                          'isDaytime' : result['isDaytime'],
-                         'location' : result['location'],
+                         'zoneName' : result['zoneName'],
                        };
                      });
                    },
@@ -77,7 +65,7 @@ class _HomeState extends State<Home> {
                  mainAxisAlignment: MainAxisAlignment.center,
                  children: [
                    Text(
-                     data['location'],
+                     data['zoneName'],
                      style: TextStyle(
                         fontSize: 30.0,
                        color: Colors.white,
@@ -89,7 +77,7 @@ class _HomeState extends State<Home> {
                SizedBox(height: 40.0),
 
                Text(
-                 data['time'],
+                 data['finalTime'],
                  style: TextStyle(
                    fontSize: 66.0,
                    color: Colors.white,
