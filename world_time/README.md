@@ -14,10 +14,10 @@ This Application uses the [timezonedb](https://timezonedb.com/api) API.
 
 I planned to include  flag images too but couldnt find a efficient way to do it yet.
 
-Loading Screen     |    Location Screen
-:-----------------:|:-------------------:
+Loading Screen|Location Screen
+:------------:|:--------------:
 
-![loading](https://user-images.githubusercontent.com/53505850/114239316-8ed56200-99a3-11eb-889f-0bd9a40a4188.png) | ![location](https://user-images.githubusercontent.com/53505850/114239461-bfb59700-99a3-11eb-875a-dca07733a3be.png)
+![loading](https://user-images.githubusercontent.com/53505850/114239316-8ed56200-99a3-11eb-889f-0bd9a40a4188.png)|![location](https://user-images.githubusercontent.com/53505850/114239461-bfb59700-99a3-11eb-875a-dca07733a3be.png)
 
 
 Home Screen : 
