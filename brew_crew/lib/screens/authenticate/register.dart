@@ -3,15 +3,15 @@ import 'package:brew_crew/shared/loading.dart';
 import 'package:flutter/material.dart';
 import 'package:brew_crew/shared/constants.dart';
 
-class SignIn extends StatefulWidget {
+class Register extends StatefulWidget {
   final Function toggleView;
-  SignIn({this.toggleView});
+  Register({this.toggleView});
 
   @override
-  _SignInState createState() => _SignInState();
+  _RegisterState createState() => _RegisterState();
 }
 
-class _SignInState extends State<SignIn> {
+class _RegisterState extends State<Register> {
   // ignore: unused_field
   final AuthService _auth = AuthService();
   final _formkey = GlobalKey<FormState>();
@@ -28,7 +28,7 @@ class _SignInState extends State<SignIn> {
       appBar: AppBar(
         backgroundColor: Colors.brown[400],
         elevation: 0.0,
-        title: Text('Sign in to Brew Crew'),
+        title: Text('Sign up to Brew Crew'),
         actions: [
           TextButton.icon(
               onPressed: () {
@@ -39,7 +39,7 @@ class _SignInState extends State<SignIn> {
                 color: Colors.black,
               ),
               label: Text(
-                'Register',
+                'Sign In',
                 style: TextStyle(color: Colors.black),
               ))
         ],
@@ -83,24 +83,26 @@ class _SignInState extends State<SignIn> {
                 // ignore: deprecated_member_use
                 RaisedButton(
                   onPressed: () async {
-                    print('in sign in button');
                     if (_formkey.currentState.validate()) {
                       setState(() {
                         loading = true;
                       });
                       dynamic result =
-                          await _auth.signInEmailAndPassword(email, password);
+                          await _auth.registerEmailAndPassword(email, password);
 
                       if (result == null) {
                         setState(() {
                           loading = false;
-                          error = 'Failed to SignIn';
+                          error = 'Enter a valid email';
                         });
                       }
+
+                      print(email);
+                      print(password);
                     }
                   },
                   child: Text(
-                    'Sign In',
+                    'Register',
                     style: TextStyle(color: Colors.white),
                   ),
                   color: Colors.pink[400],
