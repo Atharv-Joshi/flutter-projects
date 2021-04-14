@@ -1,3 +1,16 @@
+**Brew Crew**
+
+This App is used to store coffee preferences of users.
+
+Features :
+
+- Can create a account , signin and logout using [firebase_auth](https://pub.dev/packages/firebase_auth) .
+- Connected to Firestore using [cloud_firestore](https://pub.dev/packages/cloud_firestore) so data is updated in real time.
+- Screens :
+    - Home Page : To display coffee preferences
+    - Settings panel : to change a users coffee preference
+    - SignIn/Register Pages : To Sign in and register 
+
 
 Sign In | Register
 :------:|:--------:
