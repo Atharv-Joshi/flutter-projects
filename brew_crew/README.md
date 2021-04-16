@@ -1,16 +1,25 @@
-# brew_crew
+**Brew Crew**
 
-A new Flutter application.
+This App is used to store coffee preferences of users.
 
-## Getting Started
+Features :
 
-This project is a starting point for a Flutter application.
+- Can create a account , signin and logout using [firebase_auth](https://pub.dev/packages/firebase_auth) .
+- Connected to Firestore using [cloud_firestore](https://pub.dev/packages/cloud_firestore) so data is updated in real time.
+- Screens :
+    - Home Page : To display coffee preferences
+    - Settings panel : to change a users coffee preference
+    - SignIn/Register Pages : To Sign in and register 
 
-A few resources to get you started if this is your first Flutter project:
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
+Sign In | Register
+:------:|:--------:
+![signin](https://user-images.githubusercontent.com/53505850/114699014-60f27380-9d3d-11eb-9453-c134c33a28d3.jpeg)|![register](https://user-images.githubusercontent.com/53505850/114699043-694aae80-9d3d-11eb-91af-2233caac5ca8.jpeg)
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+Home | Settings
+:---:|:--------:
+![home](https://user-images.githubusercontent.com/53505850/114699179-95662f80-9d3d-11eb-8922-220181f4338a.jpeg)|![settings](https://user-images.githubusercontent.com/53505850/114699205-9d25d400-9d3d-11eb-979d-1848343ca463.jpeg)
+
+Gif|
+:--:|
+![Animated GIF-downsized](https://user-images.githubusercontent.com/53505850/114699252-ac0c8680-9d3d-11eb-8ebd-8aa532a1dd29.gif)|
