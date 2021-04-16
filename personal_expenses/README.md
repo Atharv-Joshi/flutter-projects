@@ -1,6 +1,6 @@
-# flutter_app
+# personal_expenses
 
-A new Flutter application.
+A new Flutter project.
 
 ## Getting Started
 
