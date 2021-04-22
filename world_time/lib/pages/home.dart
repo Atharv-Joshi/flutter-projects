@@ -21,73 +21,73 @@ class _HomeState extends State<Home> {
 
     return Scaffold(
 
-       body: Container(
-         decoration: BoxDecoration(
-           image: DecorationImage(
-             image: AssetImage('assets/$bgImg'),
-             fit : BoxFit.cover
-           ),
-         ),
-         child: Padding(
-           padding: EdgeInsets.fromLTRB(0, 150, 0, 0),
-           child: Column(
+      body: Container(
+        decoration: BoxDecoration(
+          image: DecorationImage(
+            image: AssetImage('assets/$bgImg'),
+            fit : BoxFit.cover
+          ),
+        ),
+        child: Padding(
+          padding: EdgeInsets.fromLTRB(0, 150, 0, 0),
+          child: Column(
 
-             children: [
-               TextButton.icon(
-                   onPressed: () async {
-                     await Navigator.pop(context);
-                     setState(() {
-                       data = {
-                         'finalTime' : data['finalTime'],
-                         // 'flag' : result['flag'],
-                         'isDaytime' : data['isDaytime'],
-                         'zoneName' : data['zoneName'],
-                       };
-                     });
-                   },
-                   icon: Icon(Icons.edit_location ,
-                     color: Colors.grey[300],),
+            children: [
+              TextButton.icon(
+                  onPressed: () async {
+                  Navigator.pop(context);
+                    setState(() {
+                      data = {
+                        'finalTime' : data['finalTime'],
+                        // 'flag' : result['flag'],
+                        'isDaytime' : data['isDaytime'],
+                        'zoneName' : data['zoneName'],
+                      };
+                    });
+                  },
+                  icon: Icon(Icons.edit_location ,
+                    color: Colors.grey[300],),
 
-                   label: Text(
-                       'Edit Location' ,
-                     style: TextStyle(
-                         color: Colors.grey[300],
-                         letterSpacing: 1.0,
-                           ),
+                  label: Text(
+                      'Edit Location' ,
+                    style: TextStyle(
+                        color: Colors.grey[300],
+                        letterSpacing: 1.0,
+                          ),
 
 
-                   ),
-               ),
+                  ),
+              ),
 
-               SizedBox(height: 30.0,),
+              SizedBox(height: 30.0,),
 
-               Row(
-                 mainAxisAlignment: MainAxisAlignment.center,
-                 children: [
-                   Text(
-                     data['zoneName'],
-                     style: TextStyle(
-                        fontSize: 30.0,
-                       color: Colors.white,
-                     ),
-                   ),
-                 ],
-               ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text(
+                    data['zoneName'],
+                    style: TextStyle(
+                      fontSize: 30.0,
+                      color: Colors.white,
+                    ),
+                  ),
+                ],
+              ),
 
-               SizedBox(height: 40.0),
+              SizedBox(height: 40.0),
 
-               Text(
-                 data['finalTime'],
-                 style: TextStyle(
-                   fontSize: 66.0,
-                   color: Colors.white,
-                 ),
-               ),
+              Text(
+                data['finalTime'],
+                style: TextStyle(
+                  fontSize: 66.0,
+                  color: Colors.white,
+                ),
+              ),
 
-             ],
-           ),
-         ),
-       ),
+            ],
+          ),
+        ),
+      ),
     );
   }
 }

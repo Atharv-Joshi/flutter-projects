@@ -1,5 +1,5 @@
-name: world_time
-description: A new Flutter application.
+name: collapsablesidebar
+description: A new Flutter project.
 
 # The following line prevents the package from being accidentally published to
 # pub.dev using `pub publish`. This is preferred for private packages.
@@ -23,10 +23,7 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  http: ^0.13.1
-  intl: ^0.17.0
-  flutter_spinkit: ^5.0.0
-  autocomplete_textfield: ^1.7.3
+  collapsible_sidebar: ^2.0.0  
 
 
   # The following adds the Cupertino Icons font to your application.
@@ -49,8 +46,8 @@ flutter:
   uses-material-design: true
 
   # To add assets to your application, add an assets section, like this:
-  assets:
-     - assets/
+assets:
+  - assets/
 
 
   # An image asset can refer to one or more resolution-specific "variants", see
