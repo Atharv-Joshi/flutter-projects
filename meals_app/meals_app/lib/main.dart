@@ -10,7 +10,9 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      routes: {'/categorymealsscreen' : (context) => CategoryMealsScreen()},
+      routes: {
+        '/' : (context) => CategoriesScreen(),
+        CategoryMealsScreen.routeName : (context) => CategoryMealsScreen()},
       title: 'DeliMeals',
       theme: ThemeData(
         primarySwatch: Colors.pink,
@@ -23,7 +25,6 @@ class MyApp extends StatelessWidget {
               headline6: TextStyle(fontSize: 24, fontFamily: 'RobotoCondensed'),
             ),
       ),
-      home: CategoriesScreen(),
     );
   }
 }
