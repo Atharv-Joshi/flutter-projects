@@ -8,21 +8,25 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
-
   bool hidePassword = true;
 
   Widget finalIcon;
 
-  Widget lockIcon = Icon(Icons.lock);
+  Widget lockIcon = Icon(
+    Icons.lock,
+    color: Colors.green,
+    );
 
-  Widget unlockIcon = Icon(Icons.lock_open);
+  Widget unlockIcon = Icon(
+    Icons.lock_open,
+    color: Colors.red,);
 
   @override
   Widget build(BuildContext context) {
     if (hidePassword == true) {
-      finalIcon = unlockIcon;
-    } else {
       finalIcon = lockIcon;
+    } else {
+      finalIcon = unlockIcon;
     }
     return Scaffold(
       body: SingleChildScrollView(
@@ -120,7 +124,9 @@ class _LoginPageState extends State<LoginPage> {
                   Align(
                     alignment: Alignment.centerRight,
                     child: TextButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.pushNamed(context, '/forgotpassword');
+                      },
                       child: Text(
                         'Forgot Password?',
                       ),

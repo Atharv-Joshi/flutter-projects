@@ -1,3 +1,4 @@
+import 'package:cowin/screens/forgot_password_screen.dart';
 import 'package:cowin/screens/login_screen.dart';
 import 'package:flutter/material.dart';
 
@@ -15,6 +16,7 @@ class MyApp extends StatelessWidget {
 
         primarySwatch: Colors.blue,
       ),
+      routes: {'/forgotpassword':(context) => ForgotPassword(),},
       home: LoginPage(),
     );
   }
