@@ -147,19 +147,19 @@ class _LoginPageState extends State<LoginPage> {
                   SizedBox(
                     height: 10,
                   ),
-                  Text('Or'),
-                  SizedBox(
-                    width: MediaQuery.of(context).size.width * 0.55,
-                    child: ElevatedButton(
-                        style: ButtonStyle(
-                            shape: MaterialStateProperty.all<
-                                    RoundedRectangleBorder>(
-                                RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(18.0),
-                                    side: BorderSide(color: Colors.blue)))),
-                        onPressed: () {},
-                        child: Text('Login using OTP')),
-                  ),
+                  // Text('Or'),
+                  // SizedBox(
+                  //   width: MediaQuery.of(context).size.width * 0.55,
+                  //   child: ElevatedButton(
+                  //       style: ButtonStyle(
+                  //           shape: MaterialStateProperty.all<
+                  //                   RoundedRectangleBorder>(
+                  //               RoundedRectangleBorder(
+                  //                   borderRadius: BorderRadius.circular(18.0),
+                  //                   side: BorderSide(color: Colors.blue)))),
+                  //       onPressed: () {},
+                  //       child: Text('Login using OTP')),
+                  // ),
                 ],
               ),
             ),
