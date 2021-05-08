@@ -11,6 +11,13 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+
+      onUnknownRoute: (settings)
+      {
+        return MaterialPageRoute(builder: (ctx){
+          return CategoriesScreen();
+        })
+      },
       routes: {
         '/' : (context) => CategoriesScreen(),
         CategoryMealsScreen.routeName : (context) => CategoryMealsScreen(),
