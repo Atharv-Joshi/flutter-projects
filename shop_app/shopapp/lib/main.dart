@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:shopapp/Screens/product_details_screen.dart';
 import 'package:shopapp/Screens/product_overview_screen.dart';
 
 void main() {
@@ -25,7 +26,11 @@ class MyApp extends StatelessWidget {
         accentColor: Colors.deepOrange,
         fontFamily: 'Lato',
       ),
-      home: ProductOverview()
+
+      routes: {
+        ProductDetailsScreen.routeName : (ctx) => ProductDetailsScreen(),
+      },
+      home: ProductOverviewScreen()
     );
   }
 }
