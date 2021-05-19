@@ -63,12 +63,12 @@ flutter:
   fonts:
     - family: Lato
       fonts:
-        - asset: fonts/Lato-Regular.ttf
-        - asset: fonts/Lato-Bold.ttf
+        - asset: assets/Lato-Regular.ttf
+        - asset: assets/Lato-Bold.ttf
           weight : 700
     - family: Anton
       fonts:
-        - asset: fonts/Anton.ttf
+        - asset: assets/Anton-Regular.ttf
   #       - asset: fonts/TrajanPro_Bold.ttf
   #         weight: 700
   #

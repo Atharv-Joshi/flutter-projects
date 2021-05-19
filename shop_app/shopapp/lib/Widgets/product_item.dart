@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'product_details_screen.dart';
+import '../Screens/product_details_screen.dart';
 
 class ProductItem extends StatelessWidget {
   //parameters
