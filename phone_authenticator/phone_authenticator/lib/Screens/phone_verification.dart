@@ -20,8 +20,8 @@ class _PhoneVerificationState extends State<PhoneVerification> {
   final TextEditingController _pinPutController = TextEditingController();
   final FocusNode _pinPutFocusNode = FocusNode();
   final BoxDecoration pinPutDecoration = BoxDecoration(
-    color: const Color.fromRGBO(43, 46, 66, 1),
-    borderRadius: BorderRadius.circular(10.0),
+    color: const Color(0xff93D2F3),
+    // borderRadius: BorderRadius.circular(0),
     border: Border.all(
       color: const Color.fromRGBO(126, 203, 224, 1),
     ),
@@ -44,9 +44,11 @@ class _PhoneVerificationState extends State<PhoneVerification> {
                   fontWeight: FontWeight.bold,
                 ),
               ),
+              SizedBox(height: 20,),
               Text(
-                'Code is sent to +91${widget.phone}.',
+                'Code is sent to +91 ${widget.phone}.',
                 style: TextStyle(
+                  fontSize: 16,
                   color: Colors.grey,
                 ),
               ),
@@ -81,7 +83,7 @@ class _PhoneVerificationState extends State<PhoneVerification> {
                     FocusScope.of(context).unfocus();
                     _scaffoldkey.currentState
                         // ignore: deprecated_member_use
-                        !.showSnackBar(SnackBar(content: Text('invalid OTP')));
+                        !.showSnackBar(SnackBar(content: Text('Invalid OTP')));
                   }
                 },
               ),
@@ -91,6 +93,9 @@ class _PhoneVerificationState extends State<PhoneVerification> {
 
               Text(
                 'Didn\'t  receive the code ? Request Again',
+                style: TextStyle(
+                  fontSize: 16,
+                ),
               ),
               Container(
                 margin: EdgeInsets.fromLTRB(20, 30, 20, 0),

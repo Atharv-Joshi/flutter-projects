@@ -27,7 +27,7 @@ class _ChooseLanguageState extends State<ChooseLanguage> {
                 style: TextStyle(
                   color: const Color(0xff000000),
                   fontWeight: FontWeight.bold,
-                  fontSize: 20,
+                  fontSize: 24,
                 ),
               ),
               SizedBox(
@@ -39,6 +39,7 @@ class _ChooseLanguageState extends State<ChooseLanguage> {
                     'You can change the language at any time.',
                     textAlign: TextAlign.center,
                     style: TextStyle(
+                      fontSize: 16,
                       color: const Color(0xff6A6C7B),
                     ),
                   )),

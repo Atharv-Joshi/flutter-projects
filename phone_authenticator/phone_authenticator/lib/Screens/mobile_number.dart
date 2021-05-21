@@ -22,7 +22,7 @@ class _MobileNumberState extends State<MobileNumber> {
                 style: TextStyle(
                   color: const Color(0xff000000),
                   fontWeight: FontWeight.bold,
-                  fontSize: 20,
+                  fontSize: 24,
                 ),
               ),
               SizedBox(
@@ -33,6 +33,7 @@ class _MobileNumberState extends State<MobileNumber> {
                 textAlign: TextAlign.center,
                 style: TextStyle(
                   color: const Color(0xff6A6C7B),
+                  fontSize: 18
                 ),
               ),
               SizedBox(
@@ -56,7 +57,11 @@ class _MobileNumberState extends State<MobileNumber> {
                   SizedBox(
                     width: 20,
                   ),
-                  Text('+91    - '),
+                  Text(
+                    '+91    - ',
+                    style: TextStyle(
+                      fontSize: 20
+                    ),),
                   SizedBox(
                     width: 20,
                   ),
@@ -68,6 +73,7 @@ class _MobileNumberState extends State<MobileNumber> {
                         hintText: 'Mobile Number',
                         hintStyle: TextStyle(
                           color: Colors.grey,
+                          fontSize: 20,
                           fontWeight: FontWeight.bold,
                         ),
                       ),
