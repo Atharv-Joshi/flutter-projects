@@ -2,6 +2,8 @@
 
 - [World Timer](https://github.com/Atharv-Joshi/flutter-projects/tree/master/world_time) 
 
+- [Liveasy Phone Authenticator](https://github.com/Atharv-Joshi/flutter-projects/tree/master/phone_authenticator) 
+
 - [Meals App](https://github.com/Atharv-Joshi/flutter-projects/tree/master/meals_app/meals_app) 
 
 - [Brew Crew](https://github.com/Atharv-Joshi/flutter-projects/tree/master/brew_crew)
