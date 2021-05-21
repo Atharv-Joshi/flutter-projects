@@ -18,11 +18,16 @@ class _ProfileSelectionState extends State<ProfileSelection> {
         child: Center(
           child: Column(
             children: [
-              Text(
-                'Please select your Profile',
-                style: TextStyle(
-                  fontWeight: FontWeight.bold,
-                  fontSize: 22,
+              Container(
+                width: MediaQuery.of(context).size.width * 0.80,
+                child: Text(
+                  
+                  'Please select your Profile',
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 22,
+                  ),
                 ),
               ),
               Container(
@@ -62,7 +67,7 @@ class _ProfileSelectionState extends State<ProfileSelection> {
                             ),
                             SizedBox(height: 10,),
                           Container(
-                            width: MediaQuery.of(context).size.width/4,
+                            width: MediaQuery.of(context).size.width * 0.50,
                             child: Text(
                               ' Lorem ipsum dolor sit amet, consectetur',
                               style: TextStyle(
@@ -115,7 +120,7 @@ class _ProfileSelectionState extends State<ProfileSelection> {
                             ),
                             SizedBox(height: 10,),
                           Container(
-                            width: MediaQuery.of(context).size.width/4,
+                            width: MediaQuery.of(context).size.width * 0.50,
                             child: Text(
                               ' Lorem ipsum dolor sit amet, consectetur',
                               style: TextStyle(

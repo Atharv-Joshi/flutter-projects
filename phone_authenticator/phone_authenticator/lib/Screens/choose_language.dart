@@ -22,19 +22,24 @@ class _ChooseLanguageState extends State<ChooseLanguage> {
               SizedBox(
                 height: 40,
               ),
-              Text(
-                'Please select your Language',
-                style: TextStyle(
-                  color: const Color(0xff000000),
-                  fontWeight: FontWeight.bold,
-                  fontSize: 24,
+              Container(
+                width: MediaQuery.of(context).size.width * 0.90,
+                child: Text(
+                  'Please select your Language',
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                    color: const Color(0xff000000),
+                    fontWeight: FontWeight.bold,
+                    fontSize: 24,
+                  ),
                 ),
               ),
               SizedBox(
                 height: 20,
               ),
               Container(
-                  margin: EdgeInsets.symmetric(horizontal: 120),
+                width: MediaQuery.of(context).size.width * 0.80,
+                  margin: EdgeInsets.symmetric(horizontal: 40),
                   child: Text(
                     'You can change the language at any time.',
                     textAlign: TextAlign.center,
@@ -53,7 +58,7 @@ class _ChooseLanguageState extends State<ChooseLanguage> {
                         color: const Color(0xff000000),
                         style: BorderStyle.solid,
                         width: 1.5)),
-                width: 250,
+                width: MediaQuery.of(context).size.width * 0.75,
                 child: DropdownButton<String>(
                   value: dropdownValue,
                   icon: const Icon(Icons.arrow_downward),
@@ -86,7 +91,7 @@ class _ChooseLanguageState extends State<ChooseLanguage> {
                 height: 40,
               ),
               Container(
-                width: 250,
+                width: MediaQuery.of(context).size.width * 0.75,
                 height: 50,
                 // ignore: deprecated_member_use
                 child: RaisedButton(

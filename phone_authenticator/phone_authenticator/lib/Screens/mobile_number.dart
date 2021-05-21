@@ -17,23 +17,30 @@ class _MobileNumberState extends State<MobileNumber> {
         child: Center(
           child: Column(
             children: [
-              Text(
-                'Please enter your mobile number',
-                style: TextStyle(
-                  color: const Color(0xff000000),
-                  fontWeight: FontWeight.bold,
-                  fontSize: 24,
+              Container(
+                width: MediaQuery.of(context).size.width * 0.80,
+                child: Text(
+                  'Please enter your mobile number',
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                    color: const Color(0xff000000),
+                    fontWeight: FontWeight.bold,
+                    fontSize: 24,
+                  ),
                 ),
               ),
               SizedBox(
                 height: 20,
               ),
-              Text(
-                'You\'ll receive a 6 digit code to verify next',
-                textAlign: TextAlign.center,
-                style: TextStyle(
-                  color: const Color(0xff6A6C7B),
-                  fontSize: 18
+              Container(
+                width: MediaQuery.of(context).size.width * 0.80,
+                child: Text(
+                  'You\'ll receive a 6 digit code to verify next',
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                    color: const Color(0xff6A6C7B),
+                    fontSize: 18
+                  ),
                 ),
               ),
               SizedBox(
@@ -41,7 +48,7 @@ class _MobileNumberState extends State<MobileNumber> {
               ),
               Container(
                 margin: EdgeInsets.symmetric(horizontal: 20),
-                padding: EdgeInsets.only(left: 10),
+                padding: EdgeInsets.symmetric(horizontal: 10),
                 decoration: BoxDecoration(
                     border: Border.all(
                         color: const Color(0xff000000),
@@ -66,7 +73,7 @@ class _MobileNumberState extends State<MobileNumber> {
                     width: 20,
                   ),
                   Container(
-                    width: 180,
+                    width: MediaQuery.of(context).size.width * 0.40,
                     child: TextFormField(
                       decoration: InputDecoration(
                         border: InputBorder.none,

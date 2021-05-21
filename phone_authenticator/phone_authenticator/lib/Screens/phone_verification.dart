@@ -21,7 +21,7 @@ class _PhoneVerificationState extends State<PhoneVerification> {
   final FocusNode _pinPutFocusNode = FocusNode();
   final BoxDecoration pinPutDecoration = BoxDecoration(
     color: const Color(0xff93D2F3),
-    // borderRadius: BorderRadius.circular(0),
+    
     border: Border.all(
       color: const Color.fromRGBO(126, 203, 224, 1),
     ),
@@ -98,7 +98,7 @@ class _PhoneVerificationState extends State<PhoneVerification> {
                 ),
               ),
               Container(
-                margin: EdgeInsets.fromLTRB(20, 30, 20, 0),
+                margin: EdgeInsets.fromLTRB(30, 30, 30, 0),
                 width: double.infinity,
                 height: 50,
                 // ignore: deprecated_member_use
