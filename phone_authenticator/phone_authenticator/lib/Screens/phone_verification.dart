@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:phone_authenticator/Screens/profile_selection.dart';
 import 'package:pinput/pin_put/pin_put.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'home.dart';
+
 
 class PhoneVerification extends StatefulWidget {
   final String phone;
@@ -44,7 +45,7 @@ class _PhoneVerificationState extends State<PhoneVerification> {
                 ),
               ),
               Text(
-                'Code is sent to +91 ${widget.phone}.',
+                'Code is sent to +91${widget.phone}.',
                 style: TextStyle(
                   color: Colors.grey,
                 ),
@@ -72,7 +73,7 @@ class _PhoneVerificationState extends State<PhoneVerification> {
                       if (value.user != null) {
                         Navigator.pushAndRemoveUntil(
                             context,
-                            MaterialPageRoute(builder: (context) => Home()),
+                            MaterialPageRoute(builder: (context) => ProfileSelection()),
                             (route) => false);
                       }
                     });
@@ -129,7 +130,7 @@ class _PhoneVerificationState extends State<PhoneVerification> {
             if (value.user != null) {
               Navigator.pushAndRemoveUntil(
                   context,
-                  MaterialPageRoute(builder: (context) => Home()),
+                  MaterialPageRoute(builder: (context) => ProfileSelection()),
                   (route) => false);
             }
           });

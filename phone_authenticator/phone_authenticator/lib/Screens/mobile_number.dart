@@ -29,7 +29,7 @@ class _MobileNumberState extends State<MobileNumber> {
                 height: 20,
               ),
               Text(
-                'You\'ll receive a 4 digit code to verify next',
+                'You\'ll receive a 6 digit code to verify next',
                 textAlign: TextAlign.center,
                 style: TextStyle(
                   color: const Color(0xff6A6C7B),

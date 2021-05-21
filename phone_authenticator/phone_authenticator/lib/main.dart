@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:phone_authenticator/Screens/choose_language.dart';
 import 'package:phone_authenticator/Screens/mobile_number.dart';
-import 'package:phone_authenticator/Screens/phone_verification.dart';
+
 
 
 

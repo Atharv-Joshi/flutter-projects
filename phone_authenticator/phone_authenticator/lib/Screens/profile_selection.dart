@@ -61,12 +61,15 @@ class _ProfileSelectionState extends State<ProfileSelection> {
                             ),
                             ),
                             SizedBox(height: 10,),
-                          Text(
-                            ' Lorem ipsum dolor sit amet, consectetur',
-                            style: TextStyle(
-                              color: Colors.grey,
-                            ),
-)
+                          Container(
+                            width: MediaQuery.of(context).size.width/4,
+                            child: Text(
+                              ' Lorem ipsum dolor sit amet, consectetur',
+                              style: TextStyle(
+                                color: Colors.grey,
+                              ),
+),
+                          )
                           
                         ],
                       ),
@@ -111,12 +114,15 @@ class _ProfileSelectionState extends State<ProfileSelection> {
                             ),
                             ),
                             SizedBox(height: 10,),
-                          Text(
-                            ' Lorem ipsum dolor sit amet, consectetur',
-                            style: TextStyle(
-                              color: Colors.grey,
-                            ),
-)
+                          Container(
+                            width: MediaQuery.of(context).size.width/4,
+                            child: Text(
+                              ' Lorem ipsum dolor sit amet, consectetur',
+                              style: TextStyle(
+                                color: Colors.grey,
+                              ),
+),
+                          )
                           
                         ],
                       ),
