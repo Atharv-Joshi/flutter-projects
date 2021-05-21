@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "793226959524",
+    "project_id": "liveasytest",
+    "storage_bucket": "liveasytest.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:793226959524:android:d3bf770d47b3b57a816431",
+        "android_client_info": {
+          "package_name": "com.example.phone_authenticator"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "793226959524-q9k5qggpie50fclb65rimh7nso9rinam.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.phone_authenticator",
+            "certificate_hash": "1afdde03fb19b159995123fde57d6346999c7321"
+          }
+        },
+        {
+          "client_id": "793226959524-38honun42qevjdpc6hfkmjp931vq3193.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAZPYyoKyv-V9Guo4wB6hf1gbSXm9mXQdM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "793226959524-38honun42qevjdpc6hfkmjp931vq3193.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
