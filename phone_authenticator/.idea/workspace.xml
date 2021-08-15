@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="917b6182-f505-4421-9a7c-b69c43b8b362" name="Default Changelist" comment="" />
+    <list default="true" id="917b6182-f505-4421-9a7c-b69c43b8b362" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -21,7 +23,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="android.sdk.path" value="E:/Android-SDK" />
     <property name="dart.analysis.tool.window.visible" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../Liveasy/new_truck_booking_app" />
     <property name="settings.editor.selected.configurable" value="AndroidSdkUpdater" />
     <property name="show.migrate.to.gradle.popup" value="false" />
   </component>
@@ -37,5 +39,15 @@
       <updated>1621575850915</updated>
     </task>
     <servers />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="100" y="100" width="1720" height="840" key="AVDManager" timestamp="1622032082520">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="100" y="100" width="1720" height="840" key="AVDManager/-1280.0.1280.680/0.0.1920.1040@0.0.1920.1040" timestamp="1622032082520" />
+    <state x="508" y="275" key="FileChooserDialogImpl" timestamp="1622032080190">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="508" y="275" key="FileChooserDialogImpl/-1280.0.1280.680/0.0.1920.1040@0.0.1920.1040" timestamp="1622032080190" />
   </component>
 </project>
