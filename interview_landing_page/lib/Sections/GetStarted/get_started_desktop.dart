@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:interview_landing_page/Widgets/GetStartedContent/get_started_content.dart';
 import 'package:interview_landing_page/Widgets/NavigationBar/navigation_bar.dart';
 
-class GetStartedView extends StatelessWidget {
-  const GetStartedView({Key? key}) : super(key: key);
+class GetStartedDesktop extends StatelessWidget {
+  const GetStartedDesktop({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
