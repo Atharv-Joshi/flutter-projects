@@ -4,11 +4,11 @@
 
 - [Liveasy Phone Authenticator](https://github.com/Atharv-Joshi/flutter-projects/tree/master/phone_authenticator) 
 
-- [Meals App](https://github.com/Atharv-Joshi/flutter-projects/tree/master/meals_app/meals_app) 
+- [Static Website](https://github.com/Atharv-Joshi/flutter-projects/tree/master/interview_landing_page) 
 
 - [Brew Crew](https://github.com/Atharv-Joshi/flutter-projects/tree/master/brew_crew)
 
-- [Personal Expenses](https://github.com/Atharv-Joshi/flutter-projects/tree/master/personal_expenses)
+- [Maple Demo App](https://github.com/Atharv-Joshi/flutter-projects/tree/master/maple_intership_task)
 
 - [Startup Name Generator](https://github.com/Atharv-Joshi/flutter-projects/tree/master/startup_name_generator)
 
