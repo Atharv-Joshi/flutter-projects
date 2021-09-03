@@ -29,6 +29,7 @@ dependencies:
   path_provider: ^2.0.2
   path: ^1.8.0
   sqflite: ^2.0.0+3
+  location: ^4.3.0
 
 
   # The following adds the Cupertino Icons font to your application.

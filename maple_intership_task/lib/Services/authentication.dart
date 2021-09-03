@@ -13,9 +13,9 @@ class Authentication{
       UserCredential result = await _auth.createUserWithEmailAndPassword(
           email: email, password: password);
       User? user = result.user;
-      print('current user ${_auth.currentUser}');
-      print('in auth name ${_detailsController.name.value}');
-      _auth.currentUser!.updateDisplayName(_detailsController.name.value);
+      // print('current user ${_auth.currentUser}');
+      // print('in auth name ${_detailsController.name.value}');
+      // _auth.currentUser!.updateDisplayName(_detailsController.name.value);
       return user;
     } catch (e) {
       return e.toString();
