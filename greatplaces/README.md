@@ -1,16 +1,9 @@
-# greatplaces
+# Great Places
 
-A new Flutter project.
+### The main feature if this app is that it uses native device feautres like camera and stores data in an sql database in local phone storage
 
-## Getting Started
+Places List Screen| Add Places Screen
+:----------:|:-------:
+![1](https://user-images.githubusercontent.com/53505850/132005108-66c5cfe2-8f6b-4559-b7fe-eb7c665789b6.jpeg)|![2](https://user-images.githubusercontent.com/53505850/132005183-1d752e33-5495-44a8-b04d-280e4be31c78.jpeg)
 
-This project is a starting point for a Flutter application.
 
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
-
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
