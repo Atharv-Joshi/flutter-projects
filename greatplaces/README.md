@@ -1,6 +1,6 @@
 # Great Places
 
-### The main feature if this app is that it uses native device feautres like camera and stores data in an sql database in local phone storage
+### The main feature of this app is that it uses native device feautres like camera and stores data in an sql database in local phone storage
 
 Places List Screen| Add Places Screen
 :----------:|:-------:
