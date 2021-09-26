@@ -1,41 +1,33 @@
 {
   "project_info": {
-    "project_number": "683472626014",
-    "project_id": "tally-83809",
-    "storage_bucket": "tally-83809.appspot.com"
+    "project_number": "374541306301",
+    "project_id": "login-demo-7108d",
+    "storage_bucket": "login-demo-7108d.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:683472626014:android:e693737a4f22e64b8cafcf",
+        "mobilesdk_app_id": "1:374541306301:android:a1b670dc92f25ded00ead4",
         "android_client_info": {
           "package_name": "com.example.maple_intership_task"
         }
       },
       "oauth_client": [
         {
-          "client_id": "683472626014-ta1tm9gmopgtvrvntlqjogc1mt8qpdl7.apps.googleusercontent.com",
-          "client_type": 1,
-          "android_info": {
-            "package_name": "com.example.maple_intership_task",
-            "certificate_hash": "ad2bc8f4cabfaa90046b0217d61fcb8fd5a02bb6"
-          }
-        },
-        {
-          "client_id": "683472626014-hb2fa1sglidfhdu3cf1eun9s0h9fmeo9.apps.googleusercontent.com",
+          "client_id": "374541306301-7o8r3rrpj9phapustp51vbhh4vkp8sdg.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyBmj4HiJpFecuWBC5MrZfGQGcagwGw0RiM"
+          "current_key": "AIzaSyCSxyKBjoX6H1KVyVjYiSLld1B6rJ1ogEM"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "683472626014-hb2fa1sglidfhdu3cf1eun9s0h9fmeo9.apps.googleusercontent.com",
+              "client_id": "374541306301-7o8r3rrpj9phapustp51vbhh4vkp8sdg.apps.googleusercontent.com",
               "client_type": 3
             }
           ]
