@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:localbitz/screens/login.dart';
+import 'package:localbitz/screens/signup.dart';
 import 'package:localbitz/widgets/buttons/largeButtonTemplate.dart';
 
 class GettingStarted extends StatelessWidget {
@@ -35,8 +38,12 @@ class GettingStarted extends StatelessWidget {
                 ),
               ),
             ),
-            LargeButtonTemplate(text: 'Sign Up', function: (){}, bgColor: 0xffF94144, textColor: 0xffFFFFFF, isArrow: false),
-            LargeButtonTemplate(text: 'Login', function: (){}, bgColor: 0xffFFFFFF, textColor: 0xffF94144, isArrow: true,)
+            LargeButtonTemplate(text: 'Sign Up', function: (){
+              Get.to(() => SignUp());
+            }, bgColor: 0xffF94144, textColor: 0xffFFFFFF, isArrow: false),
+            LargeButtonTemplate(text: 'Login', function: (){
+              Get.to(() => Login());
+            }, bgColor: 0xffFFFFFF, textColor: 0xffF94144, isArrow: true,)
           ],
         ),
       ),
