@@ -26,6 +26,8 @@ dependencies:
 
 
   get: ^4.3.8
+  email_validator: ^2.0.1
+  dio: ^4.0.0
 
 
   # The following adds the Cupertino Icons font to your application.

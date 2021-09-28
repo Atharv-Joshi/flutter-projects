@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:localbitz/widgets/buttons/largeButtonTemplate.dart';
 import 'package:localbitz/widgets/buttons/customBackButton.dart';
 import 'package:localbitz/widgets/forms/signUpForm.dart';
 
@@ -35,10 +34,6 @@ class SignUp extends StatelessWidget {
                     ),
                   ),
                   SignUpForm(),
-                  Container(
-                    margin: EdgeInsets.only(bottom: 80),
-                      child: LargeButtonTemplate(text: 'Sign Up', function: (){}, bgColor: 0xffF94144, textColor: 0xffFFFFFF, isArrow: true)
-                  ),
                   Text(
                     'You are completely safe.'
                   ),
