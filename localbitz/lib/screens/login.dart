@@ -15,6 +15,7 @@ class Login extends StatelessWidget {
             child: Container(
               color: Color(0xffEFEFEF).withOpacity(.2),
               width: double.infinity,
+              height: MediaQuery.of(context).size.height,
               child: Container(
                 margin: EdgeInsets.symmetric(horizontal: 20, vertical: 20),
                 child: Column(
