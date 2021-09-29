@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:localbitz/widgets/buttons/largeButtonTemplate.dart';
 import 'package:localbitz/widgets/buttons/customBackButton.dart';
 import 'package:localbitz/widgets/forms/loginForm.dart';
-import 'package:localbitz/widgets/forms/signUpForm.dart';
 
 
 class Login extends StatelessWidget {
@@ -36,10 +34,6 @@ class Login extends StatelessWidget {
                       ),
                     ),
                     LoginForm(),
-                    Container(
-                        margin: EdgeInsets.only(bottom: 80),
-                        child: LargeButtonTemplate(text: 'Login', function: (){}, bgColor: 0xffF94144, textColor: 0xffFFFFFF, isArrow: true)
-                    ),
                     Text(
                         'Forgot Password'
                     ),
