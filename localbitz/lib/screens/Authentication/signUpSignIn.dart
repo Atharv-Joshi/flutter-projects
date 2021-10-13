@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:localbitz/screens/login.dart';
-import 'package:localbitz/screens/signup.dart';
+import 'package:localbitz/screens/Authentication/login.dart';
+import 'package:localbitz/screens/Authentication/signup.dart';
 import 'package:localbitz/widgets/buttons/largeButtonTemplate.dart';
 
 class SignupSignIn extends StatelessWidget {

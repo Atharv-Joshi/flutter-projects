@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:localbitz/screens/wrapper.dart';
+import 'package:localbitz/screens/Authentication/wrapper.dart';
 
 
 

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:localbitz/screens/gettingStarted.dart';
+import 'package:localbitz/screens/Authentication/signUpSignIn.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:localbitz/screens/home.dart';
 import 'package:get/get.dart';
@@ -17,7 +17,7 @@ class _WrapperState extends State<Wrapper> {
     SharedPreferences pref = await SharedPreferences.getInstance();
     customerId = pref.getString('customerId');
     if(customerId != null){
-      Get.to(() => Home());
+      Get.to(() => Home(), duration: Duration(seconds: 1), transition: Transition.native);
     }
     else{
       Get.to(() => SignupSignIn());
