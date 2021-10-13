@@ -1,10 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'screens/gettingStarted.dart';
+import 'package:localbitz/screens/wrapper.dart';
 
-void main()  {
+
+
+void main() {
   runApp(MyApp());
+
 }
+
+
 
 class MyApp extends StatelessWidget {
   @override
@@ -15,7 +20,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.red,
       ),
-      home: GettingStarted(),
+      home: Wrapper(),
     );
   }
 }

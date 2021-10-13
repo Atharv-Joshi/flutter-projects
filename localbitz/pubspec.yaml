@@ -28,6 +28,14 @@ dependencies:
   get: ^4.3.8
   email_validator: ^2.0.1
   dio: ^4.0.0
+  shared_preferences: ^2.0.8
+  flutter_native_splash:
+
+flutter_native_splash:
+  color: "#ffffff"
+  color_dark: '#1a1a1a'
+  image: assets/images/logo_300.png
+  android: true
 
 
   # The following adds the Cupertino Icons font to your application.

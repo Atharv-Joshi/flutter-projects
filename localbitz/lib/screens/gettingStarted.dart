@@ -4,8 +4,8 @@ import 'package:localbitz/screens/login.dart';
 import 'package:localbitz/screens/signup.dart';
 import 'package:localbitz/widgets/buttons/largeButtonTemplate.dart';
 
-class GettingStarted extends StatelessWidget {
-  const GettingStarted({Key? key}) : super(key: key);
+class SignupSignIn extends StatelessWidget {
+  const SignupSignIn({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
