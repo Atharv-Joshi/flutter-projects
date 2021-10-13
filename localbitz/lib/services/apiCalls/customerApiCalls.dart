@@ -1,9 +1,8 @@
 import 'package:dio/dio.dart';
 import 'package:localbitz/models/customer.dart';
-import 'package:localbitz/services/conversionIntoModels/conversionIntoCustomer.dart';
+
 
 class CustomerApiCalls{
-
   final baseUrl = 'https://localbitz.deta.dev';
 
   Future registerCustomer(email,userName,password) async {
@@ -15,8 +14,7 @@ class CustomerApiCalls{
       'email' : email,
       'password' : password
     });
-
-    Customer customer = conversionIntoCustomer(response.data);
+    Customer customer = Customer.fromJSON(response.data);
     return customer;
   }
   on DioError catch(e){
@@ -35,7 +33,7 @@ class CustomerApiCalls{
         'password' : password
       }
       );
-      Customer customer = conversionIntoCustomer(response.data);
+      Customer customer = Customer.fromJSON(response.data);
       return customer;
     }
     on DioError catch(e){

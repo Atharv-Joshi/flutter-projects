@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:localbitz/constants/decoration.dart';
+import 'package:localbitz/models/customer.dart';
 import 'package:localbitz/screens/home.dart';
 import 'package:localbitz/widgets/buttons/largeButtonTemplate.dart';
 import 'package:email_validator/email_validator.dart';
@@ -103,14 +104,15 @@ class _SignUpFormState extends State<SignUpForm> {
                           setState(() {
                             isAPICallDone = false;
                           });
-                          var customer = await _apiCalls.registerCustomer(email, userName, password);
+                          var response = await _apiCalls.registerCustomer(email, userName, password);
                           setState(() {
                             isAPICallDone = true;
                           });
-                          if(customer.runtimeType == String){
-                            Get.snackbar('Error', customer);
+                          if(response.runtimeType == String){
+                            Get.snackbar('Error', response);
                           }
                           else{
+                            Customer customer = response;
                             Get.offAll(() => Home());
                           }
                         }
