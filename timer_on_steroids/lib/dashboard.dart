@@ -13,24 +13,27 @@ class Dashboard extends StatefulWidget {
 class _DashboardState extends State<Dashboard> {
 
   Timer? timer = Timer(const Duration(seconds: 0), (){});
-  Duration duration =  const Duration();
+  Duration durationCompleted =  const Duration();
+  Duration durationRemaining = const Duration(seconds: 7776000);
 
   @override
   void initState() {
     super.initState();
-    duration = Duration(seconds: widget.currentStreakInSeconds.toInt());
+    durationCompleted = Duration(seconds: widget.currentStreakInSeconds.toInt());
       startTimer();
   }
 
   void startTimer() {
-    timer = Timer.periodic(const Duration(seconds: 1), (timer) => addTime());
+    timer = Timer.periodic(const Duration(seconds: 1), (timer) => calculateTime());
   }
 
-  void addTime() {
+  void calculateTime() {
     const addSeconds = 1;
-    final seconds = duration.inSeconds + addSeconds;
+    final secondsCompleted = durationCompleted.inSeconds + addSeconds;
+    final secondsRemaining = durationRemaining.inSeconds - addSeconds;
     setState(() {
-      duration = Duration(seconds: seconds);
+      durationCompleted = Duration(seconds: secondsCompleted);
+      durationRemaining = Duration(seconds: secondsRemaining);
     });
 
   }
@@ -53,7 +56,7 @@ class _DashboardState extends State<Dashboard> {
       body: SafeArea(
         child: Column(
           children: [
-            buildTime(),
+            buildTime(durationCompleted),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
@@ -62,12 +65,15 @@ class _DashboardState extends State<Dashboard> {
                         (){
                       timer!.cancel();
                       setState(() {
-                        duration = const Duration();
+                        durationCompleted = const Duration();
+                        durationRemaining = const Duration(seconds: 7776000);
                         setValueInLocalStorage(DateTime.now().millisecondsSinceEpoch/1000);
                       });
                       startTimer();
                         } ,
-                    child: const Text('Relapse'))
+                    child: const Text('Relapse')
+                ),
+                buildTime(durationRemaining),
               ],
             ),
           ],
@@ -76,7 +82,7 @@ class _DashboardState extends State<Dashboard> {
     );
   }
 
-  Widget buildTime(){
+  Widget buildTime(Duration duration){
     String twoDigits(int n) => n.toString().padLeft(2, '0');
     final minutes = twoDigits(duration.inMinutes.remainder(60));
     final seconds = twoDigits(duration.inSeconds.remainder(60));
