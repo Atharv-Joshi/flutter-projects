@@ -14,12 +14,14 @@ class _DashboardState extends State<Dashboard> {
 
   Timer? timer = Timer(const Duration(seconds: 0), (){});
   Duration durationCompleted =  const Duration();
-  Duration durationRemaining = const Duration(seconds: 7776000);
+  Duration durationRemaining = const Duration();
+  final secondsIn90Days = 7776000;
 
   @override
   void initState() {
     super.initState();
     durationCompleted = Duration(seconds: widget.currentStreakInSeconds.toInt());
+    durationRemaining = Duration(seconds: secondsIn90Days - widget.currentStreakInSeconds.toInt());
       startTimer();
   }
 
