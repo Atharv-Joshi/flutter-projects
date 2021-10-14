@@ -1,22 +1,25 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class Dashboard extends StatefulWidget {
-  const Dashboard({Key? key}) : super(key: key);
+  final double currentStreakInSeconds;
+  const Dashboard({Key? key, required this.currentStreakInSeconds}) : super(key: key);
   @override
   _DashboardState createState() => _DashboardState();
 }
 
 class _DashboardState extends State<Dashboard> {
 
-  Timer? timer;
-  Duration duration = const Duration();
+  Timer? timer = Timer(const Duration(seconds: 0), (){});
+  Duration duration =  const Duration();
 
   @override
   void initState() {
     super.initState();
-    startTimer();
+    duration = Duration(seconds: widget.currentStreakInSeconds.toInt());
+      startTimer();
   }
 
   void startTimer() {
@@ -32,6 +35,11 @@ class _DashboardState extends State<Dashboard> {
 
   }
 
+  void setValueInLocalStorage(startTimeInSeconds) async {
+    SharedPreferences _preferences = await SharedPreferences.getInstance();
+    _preferences.setDouble('startTimeInSeconds', startTimeInSeconds);
+  }
+
 
   @override
   void dispose() {
@@ -42,8 +50,28 @@ class _DashboardState extends State<Dashboard> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Center(
-        child: buildTime()
+      body: SafeArea(
+        child: Column(
+          children: [
+            buildTime(),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                TextButton(
+                    onPressed:
+                        (){
+                      timer!.cancel();
+                      setState(() {
+                        duration = const Duration();
+                        setValueInLocalStorage(DateTime.now().millisecondsSinceEpoch/1000);
+                      });
+                      startTimer();
+                        } ,
+                    child: const Text('Relapse'))
+              ],
+            ),
+          ],
+        ),
       ),
     );
   }
