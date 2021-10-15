@@ -12,21 +12,25 @@ class Wrapper extends StatefulWidget {
 class _WrapperState extends State<Wrapper> {
 
   double currentStreakInSeconds = 0;
+  int best = 0;
+  int attempts = 1;
 
   @override
   void initState() {
-    calculateStreak();
+    getCurrentStats();
     super.initState();
   }
 
-  void calculateStreak() async {
+  void getCurrentStats() async {
     SharedPreferences _preferences = await SharedPreferences.getInstance();
     double? startTimeInSeconds = _preferences.getDouble('startTimeInSeconds');
     if(startTimeInSeconds != null){
       double currentTimeInSeconds = (DateTime.now().millisecondsSinceEpoch)/1000;
       currentStreakInSeconds = currentTimeInSeconds - startTimeInSeconds;
     }
-    Get.off(() =>  Dashboard(currentStreakInSeconds: currentStreakInSeconds,) , duration: const Duration(seconds: 1));
+    attempts = _preferences.getInt('attempts') ?? 1;
+    best = _preferences.getInt('best') ?? 0;
+    Get.off(() =>  Dashboard(currentStreakInSeconds: currentStreakInSeconds, attempts: attempts , best: best,) , duration: const Duration(seconds: 1));
   }
 
   @override
@@ -37,6 +41,4 @@ class _WrapperState extends State<Wrapper> {
       ),
     );
   }
-
-
 }
