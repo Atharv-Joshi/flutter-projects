@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -28,11 +29,7 @@ class _DashboardState extends State<Dashboard> {
     attempts = widget.attempts;
     best = widget.best;
     durationRemaining = Duration(seconds: secondsIn90Days - widget.currentStreakInSeconds.toInt());
-      startTimer();
-  }
-
-  void startTimer() {
-    timer = Timer.periodic(const Duration(seconds: 1), (timer) => calculateTime());
+    startTimer();
   }
 
   @override
@@ -44,34 +41,46 @@ class _DashboardState extends State<Dashboard> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SafeArea(
+      body: Container(
+        color: Colors.black,
+        padding: const EdgeInsets.symmetric(horizontal: 30,vertical: 50),
+        width: double.infinity,
         child: Column(
+          // crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            buildTime(durationCompleted , true),
-            buildTime(durationRemaining , false),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                TextButton(
-                    onPressed:
-                        () async {
-                      timer!.cancel();
-                      SharedPreferences _preferences = await SharedPreferences.getInstance();
-                      setState(() {
-                        attempts = _preferences.getInt('attempts')! + 1;
-                        durationCompleted = const Duration();
-                        durationRemaining = const Duration(seconds: 7776000);
-                        setValueInLocalStorage(DateTime.now().millisecondsSinceEpoch/1000);
-                      });
-                      startTimer();
-                      _preferences.setInt('attempts', attempts!);
-                        } ,
-                    child: const Text('Relapse')
-                ),
+                documentationTemplate(label: 'Best', value: best, descriptor: 'days'),
+                documentationTemplate(label: 'Attempts', value: attempts, descriptor: 'times'),
               ],
             ),
-            documentationTemplate(label: 'Best', value: best, descriptor: 'days'),
-            documentationTemplate(label: 'Attempts', value: attempts, descriptor: 'times'),
+            Container(
+                margin: EdgeInsets.only(top: MediaQuery.of(context).size.height * 0.25),
+                child: buildTime(durationCompleted , true)),
+            Container(
+                margin: EdgeInsets.only(top: MediaQuery.of(context).size.height * 0.20),
+                child: buildTime(durationRemaining , false)),
+            IconButton(
+                onPressed:
+                    () async {
+                  timer!.cancel();
+                  SharedPreferences _preferences = await SharedPreferences.getInstance();
+                  setState(() {
+                    attempts = _preferences.getInt('attempts')! + 1;
+                    durationCompleted = const Duration();
+                    durationRemaining = const Duration(seconds: 7776000);
+                    setValueInLocalStorage(DateTime.now().millisecondsSinceEpoch/1000);
+                  });
+                  startTimer();
+                  _preferences.setInt('attempts', attempts!);
+                } ,
+                icon: Image.asset(
+                    'assets/images/relapse.png',
+                  height: 200,
+                  width: 100,
+                ),
+            ),
           ],
         ),
       ),
@@ -83,20 +92,37 @@ class _DashboardState extends State<Dashboard> {
     final minutes = twoDigits(duration.inMinutes.remainder(60));
     final seconds = twoDigits(duration.inSeconds.remainder(60));
     final hours = twoDigits(duration.inHours.remainder(24));
-    final days = twoDigits(duration.inDays.remainder(365));
-    return isCompleted ? Column(
-      children: [
-        timeCard(value: days, label: 'Days'),
-        Row(
-          children: [
-            timeCard(value: hours, label: 'Hrs'),
-            timeCard(value: minutes, label: 'Mins'),
-          ],
-        ),
-        timeCard(value: seconds, label: 'Secs'),
-      ],
+    final days = duration.inDays.remainder(365).toString();
+    return isCompleted ? Container(
+      margin: const EdgeInsets.all(30),
+      child: Column(
+        children: [
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              timeCard(value: days, label: 'Days'),
+            ],
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              timeCard(value: hours, label: 'Hrs'),
+              timeCard(value: minutes, label: 'Mins'),
+            ],
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              timeCard(value: seconds, label: 'Secs'),
+            ],
+          ),
+        ],
+      ),
     ) : Text(
-        'ONLY $days Days ${hours}h ${minutes}m ${seconds}s REMAINING'
+      'ONLY $days Days ${hours}h ${minutes}m ${seconds}s REMAINING',
+      style: const TextStyle(
+          color: Colors.white
+      ),
     );
   }
 
@@ -104,11 +130,26 @@ class _DashboardState extends State<Dashboard> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text(label),
+        Text(
+          label,
+          style: const TextStyle(
+              color: Colors.white
+          ),
+        ),
         Row(
           children: [
-            Text(value.toString()),
-            Text(descriptor)
+            Text(
+              value.toString(),
+              style: const TextStyle(
+                  color: Colors.white
+              ),
+            ),
+            Text(
+              descriptor,
+              style: const TextStyle(
+                  color: Colors.white
+              ),
+            )
           ],
         ),
       ],
@@ -118,8 +159,19 @@ class _DashboardState extends State<Dashboard> {
   Widget timeCard({required value,required label}){
     return Row(
       children: [
-        Text(value),
-        Text(label),
+        Text(
+          value,
+          style: const TextStyle(
+              fontSize: 30,
+              color: Colors.white
+          ),
+        ),
+        Text(
+          label,
+          style: const TextStyle(
+              color: Colors.white
+          ),
+        ),
       ],
     );
   }
@@ -136,6 +188,10 @@ class _DashboardState extends State<Dashboard> {
     updateBest(days);
   }
 
+  void startTimer() {
+    timer = Timer.periodic(const Duration(seconds: 1), (timer) => calculateTime());
+  }
+
   void setValueInLocalStorage(startTimeInSeconds) async {
     SharedPreferences _preferences = await SharedPreferences.getInstance();
     _preferences.setDouble('startTimeInSeconds', startTimeInSeconds);
@@ -143,7 +199,7 @@ class _DashboardState extends State<Dashboard> {
 
   void updateBest(days) async {
     SharedPreferences _preferences = await SharedPreferences.getInstance();
-    if(_preferences.getInt('best') == null || days > _preferences.getInt('best')){
+    if(days > _preferences.getInt('best')){
       _preferences.setInt('best', days);
       setState(() {
         best = days;

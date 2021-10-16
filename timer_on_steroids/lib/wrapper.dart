@@ -28,9 +28,21 @@ class _WrapperState extends State<Wrapper> {
       double currentTimeInSeconds = (DateTime.now().millisecondsSinceEpoch)/1000;
       currentStreakInSeconds = currentTimeInSeconds - startTimeInSeconds;
     }
-    attempts = _preferences.getInt('attempts') ?? 1;
-    best = _preferences.getInt('best') ?? 0;
+    await setInitialValues();
+    attempts = _preferences.getInt('attempts')!;
+    best = _preferences.getInt('best')!;
     Get.off(() =>  Dashboard(currentStreakInSeconds: currentStreakInSeconds, attempts: attempts , best: best,) , duration: const Duration(seconds: 1));
+  }
+
+  Future<bool> setInitialValues() async {
+    SharedPreferences _preferences = await SharedPreferences.getInstance();
+    if(_preferences.getInt('attempts') == null){
+      _preferences.setInt('attempts', 1);
+    }
+    if(_preferences.getInt('best') == null){
+      _preferences.setInt('best', 1);
+    }
+    return true;
   }
 
   @override
