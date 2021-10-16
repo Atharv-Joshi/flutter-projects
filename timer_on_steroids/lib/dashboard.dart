@@ -70,7 +70,7 @@ class _DashboardState extends State<Dashboard> {
                 ),
               ],
             ),
-            documentationTemplate(label: 'Best', value: 0, descriptor: 'days'),
+            documentationTemplate(label: 'Best', value: best, descriptor: 'days'),
             documentationTemplate(label: 'Attempts', value: attempts, descriptor: 'times'),
           ],
         ),
@@ -132,12 +132,23 @@ class _DashboardState extends State<Dashboard> {
       durationCompleted = Duration(seconds: secondsCompleted);
       durationRemaining = Duration(seconds: secondsRemaining);
     });
-
+    final days = durationCompleted.inDays.remainder(365);
+    updateBest(days);
   }
 
   void setValueInLocalStorage(startTimeInSeconds) async {
     SharedPreferences _preferences = await SharedPreferences.getInstance();
     _preferences.setDouble('startTimeInSeconds', startTimeInSeconds);
+  }
+
+  void updateBest(days) async {
+    SharedPreferences _preferences = await SharedPreferences.getInstance();
+    if(_preferences.getInt('best') == null || days > _preferences.getInt('best')){
+      _preferences.setInt('best', days);
+      setState(() {
+        best = days;
+      });
+    }
   }
 
 }
