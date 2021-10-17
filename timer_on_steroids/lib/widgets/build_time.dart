@@ -72,7 +72,9 @@ class BuildTime extends StatelessWidget {
     ) : Text(
       'ONLY $days Days ${hours}h ${minutes}m ${seconds}s REMAINING',
       style: const TextStyle(
-          color: Colors.white
+          color: Colors.white,
+        fontWeight: FontWeight.bold,
+        fontSize: 16
       ),
     );
   }

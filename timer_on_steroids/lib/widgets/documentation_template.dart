@@ -14,7 +14,10 @@ class DocumentationTemplate extends StatelessWidget {
         Text(
           label,
           style: const TextStyle(
-              color: Colors.white
+              color: Colors.pinkAccent,
+              fontSize: 16,
+              letterSpacing: 1,
+              fontWeight: FontWeight.bold
           ),
         ),
         Row(
@@ -22,13 +25,20 @@ class DocumentationTemplate extends StatelessWidget {
             Text(
               value.toString(),
               style: const TextStyle(
-                  color: Colors.white
+                  color: Colors.deepPurpleAccent,
+                  fontSize: 28,
+                  fontWeight: FontWeight.bold
               ),
             ),
-            Text(
-              descriptor,
-              style: const TextStyle(
-                  color: Colors.white
+            Container(
+              margin: const EdgeInsets.only(left: 5),
+              child: Text(
+                descriptor,
+                style: const TextStyle(
+                    color: Colors.grey,
+                    letterSpacing: 1,
+                    fontWeight: FontWeight.bold
+                ),
               ),
             )
           ],

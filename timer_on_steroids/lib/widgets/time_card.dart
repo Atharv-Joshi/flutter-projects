@@ -12,13 +12,18 @@ class TimeCard extends StatelessWidget {
           value,
           style: const TextStyle(
               fontSize: 30,
-              color: Colors.white
+              color: Colors.white,
+            fontWeight: FontWeight.bold
           ),
         ),
-        Text(
-          label,
-          style: const TextStyle(
-              color: Colors.white
+        Container(
+          margin: const EdgeInsets.only(left: 5),
+          child: Text(
+            label,
+            style: const TextStyle(
+                color: Colors.grey,
+              letterSpacing: 1
+            ),
           ),
         ),
       ],

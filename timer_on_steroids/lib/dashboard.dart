@@ -45,44 +45,46 @@ class _DashboardState extends State<Dashboard> {
     return Scaffold(
       body: Container(
         color: Colors.black,
-        padding: const EdgeInsets.symmetric(horizontal: 30,vertical: 50),
+        padding:  EdgeInsets.symmetric(horizontal: MediaQuery.of(context).size.width * .08,vertical: MediaQuery.of(context).size.height * .08),
         width: double.infinity,
         child: Column(
-          // crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                DocumentationTemplate(label: 'Best', value: best, descriptor: 'days'),
-                DocumentationTemplate(label: 'Attempts', value: attempts, descriptor: 'times'),
-              ],
+            Container(
+              margin: EdgeInsets.only( top : MediaQuery.of(context).size.height * .08),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  DocumentationTemplate(label: 'Best', value: best, descriptor: 'days'),
+                  DocumentationTemplate(label: 'Attempts', value: attempts, descriptor: 'times'),
+                ],
+              ),
             ),
             Container(
-                margin: EdgeInsets.only(top: MediaQuery.of(context).size.height * 0.25),
+                margin: EdgeInsets.only(top: MediaQuery.of(context).size.height * 0.11),
                 child: BuildTime(duration: durationCompleted , isCompleted : true)),
-            Container(
-                margin: EdgeInsets.only(top: MediaQuery.of(context).size.height * 0.16),
-                child: BuildTime(duration : durationRemaining , isCompleted : false)),
             IconButton(
-                onPressed:
-                    () async {
-                  timer!.cancel();
-                  SharedPreferences _preferences = await SharedPreferences.getInstance();
-                  setState(() {
-                    attempts = _preferences.getInt('attempts')! + 1;
-                    durationCompleted = const Duration();
-                    durationRemaining = const Duration(seconds: 7776000);
-                    setValueInLocalStorage(DateTime.now().millisecondsSinceEpoch/1000);
-                  });
-                  startTimer();
-                  _preferences.setInt('attempts', attempts!);
-                } ,
-                icon: Image.asset(
-                    'assets/images/relapse.png',
-                  height: 200,
-                  width: 100,
-                ),
+              iconSize: 50,
+              tooltip: 'Relapse',
+              onPressed:
+                  () async {
+                timer!.cancel();
+                SharedPreferences _preferences = await SharedPreferences.getInstance();
+                setState(() {
+                  attempts = _preferences.getInt('attempts')! + 1;
+                  durationCompleted = const Duration();
+                  durationRemaining = const Duration(seconds: 7776000);
+                  setValueInLocalStorage(DateTime.now().millisecondsSinceEpoch/1000);
+                });
+                startTimer();
+                _preferences.setInt('attempts', attempts!);
+              } ,
+              icon: Image.asset(
+                'assets/images/relapse.png',
+              ),
             ),
+            Container(
+                margin: EdgeInsets.only(top: MediaQuery.of(context).size.height * 0.12),
+                child: BuildTime(duration : durationRemaining , isCompleted : false)),
           ],
         ),
       ),
