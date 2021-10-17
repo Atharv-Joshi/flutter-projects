@@ -3,6 +3,8 @@ import 'dart:async';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:timer_on_steroids/widgets/build_time.dart';
+import 'package:timer_on_steroids/widgets/documentation_template.dart';
 
 class Dashboard extends StatefulWidget {
   final double currentStreakInSeconds;
@@ -51,16 +53,16 @@ class _DashboardState extends State<Dashboard> {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                documentationTemplate(label: 'Best', value: best, descriptor: 'days'),
-                documentationTemplate(label: 'Attempts', value: attempts, descriptor: 'times'),
+                DocumentationTemplate(label: 'Best', value: best, descriptor: 'days'),
+                DocumentationTemplate(label: 'Attempts', value: attempts, descriptor: 'times'),
               ],
             ),
             Container(
                 margin: EdgeInsets.only(top: MediaQuery.of(context).size.height * 0.25),
-                child: buildTime(durationCompleted , true)),
+                child: BuildTime(duration: durationCompleted , isCompleted : true)),
             Container(
-                margin: EdgeInsets.only(top: MediaQuery.of(context).size.height * 0.20),
-                child: buildTime(durationRemaining , false)),
+                margin: EdgeInsets.only(top: MediaQuery.of(context).size.height * 0.16),
+                child: BuildTime(duration : durationRemaining , isCompleted : false)),
             IconButton(
                 onPressed:
                     () async {
@@ -84,95 +86,6 @@ class _DashboardState extends State<Dashboard> {
           ],
         ),
       ),
-    );
-  }
-
-  Widget buildTime(Duration duration , bool isCompleted){
-    String twoDigits(int n) => n.toString().padLeft(2, '0');
-    final minutes = twoDigits(duration.inMinutes.remainder(60));
-    final seconds = twoDigits(duration.inSeconds.remainder(60));
-    final hours = twoDigits(duration.inHours.remainder(24));
-    final days = duration.inDays.remainder(365).toString();
-    return isCompleted ? Container(
-      margin: const EdgeInsets.all(30),
-      child: Column(
-        children: [
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              timeCard(value: days, label: 'Days'),
-            ],
-          ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              timeCard(value: hours, label: 'Hrs'),
-              timeCard(value: minutes, label: 'Mins'),
-            ],
-          ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              timeCard(value: seconds, label: 'Secs'),
-            ],
-          ),
-        ],
-      ),
-    ) : Text(
-      'ONLY $days Days ${hours}h ${minutes}m ${seconds}s REMAINING',
-      style: const TextStyle(
-          color: Colors.white
-      ),
-    );
-  }
-
-  Widget documentationTemplate({required label, required value, required descriptor}){
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Text(
-          label,
-          style: const TextStyle(
-              color: Colors.white
-          ),
-        ),
-        Row(
-          children: [
-            Text(
-              value.toString(),
-              style: const TextStyle(
-                  color: Colors.white
-              ),
-            ),
-            Text(
-              descriptor,
-              style: const TextStyle(
-                  color: Colors.white
-              ),
-            )
-          ],
-        ),
-      ],
-    );
-  }
-
-  Widget timeCard({required value,required label}){
-    return Row(
-      children: [
-        Text(
-          value,
-          style: const TextStyle(
-              fontSize: 30,
-              color: Colors.white
-          ),
-        ),
-        Text(
-          label,
-          style: const TextStyle(
-              color: Colors.white
-          ),
-        ),
-      ],
     );
   }
 
@@ -206,5 +119,4 @@ class _DashboardState extends State<Dashboard> {
       });
     }
   }
-
 }
