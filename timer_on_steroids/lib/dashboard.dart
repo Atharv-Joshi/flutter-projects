@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:timer_on_steroids/widgets/build_time.dart';
 import 'package:timer_on_steroids/widgets/documentation_template.dart';
+import 'package:timer_on_steroids/widgets/custom_drawer.dart';
 
 class Dashboard extends StatefulWidget {
   final double currentStreakInSeconds;
@@ -45,7 +46,7 @@ class _DashboardState extends State<Dashboard> {
       ),
       body: Container(
         color: Colors.black,
-        padding:  EdgeInsets.symmetric(horizontal: MediaQuery.of(context).size.width * .08,vertical: MediaQuery.of(context).size.height * .08),
+        padding:  EdgeInsets.symmetric(horizontal: MediaQuery.of(context).size.width * .08,vertical: MediaQuery.of(context).size.height * .03),
         width: double.infinity,
         child: Column(
           children: [
@@ -57,7 +58,7 @@ class _DashboardState extends State<Dashboard> {
               ],
             ),
             Container(
-                margin: EdgeInsets.only(top: MediaQuery.of(context).size.height * 0.11),
+                margin: EdgeInsets.only(top: MediaQuery.of(context).size.height * 0.05),
                 child: BuildTime(duration: durationCompleted , isCompleted : true)),
             IconButton(
               iconSize: 50,
@@ -80,46 +81,12 @@ class _DashboardState extends State<Dashboard> {
               ),
             ),
             Container(
-                margin: EdgeInsets.only(top: MediaQuery.of(context).size.height * 0.09),
+                margin: EdgeInsets.only(top: MediaQuery.of(context).size.height * 0.15),
                 child: BuildTime(duration : durationRemaining , isCompleted : false)),
           ],
         ),
       ),
-      drawer: Drawer(
-        child: SafeArea(
-          child: Container(
-            color: Colors.black87,
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                TextButton(
-                    onPressed: resetValues
-
-                    ,
-                    child:  Row(
-                      children: const [
-                        Icon(
-                            Icons.delete,
-                          color: Colors.greenAccent,
-                        ),
-                        Text(
-                            'Reset All',
-                          style: TextStyle(
-                            fontSize: 18,
-                            color: Colors.white,
-                            letterSpacing: 1
-                          ),
-                        ),
-                      ],
-                    )
-                )
-              ],
-            ),
-          ),
-        ),
-      ),
-
-      drawerScrimColor: Colors.black,
+      drawer: CustomDrawer(resetValues: resetValues ,),
     );
   }
 

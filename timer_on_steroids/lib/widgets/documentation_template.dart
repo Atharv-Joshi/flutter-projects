@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:timer_on_steroids/widgets/custom_divider.dart';
 
 class DocumentationTemplate extends StatelessWidget {
   final String label;
@@ -15,7 +16,7 @@ class DocumentationTemplate extends StatelessWidget {
           label,
           style: const TextStyle(
               color: Colors.pinkAccent,
-              fontSize: 18,
+              fontSize: 22,
               letterSpacing: 1,
               fontWeight: FontWeight.bold
           ),
@@ -26,7 +27,7 @@ class DocumentationTemplate extends StatelessWidget {
               value.toString(),
               style: const TextStyle(
                   color: Colors.deepPurpleAccent,
-                  fontSize: 28,
+                  fontSize: 32,
                   fontWeight: FontWeight.bold
               ),
             ),
