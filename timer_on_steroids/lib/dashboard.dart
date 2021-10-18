@@ -21,17 +21,14 @@ class _DashboardState extends State<Dashboard> {
   Duration durationCompleted =  const Duration();
   Duration durationRemaining = const Duration();
   final secondsIn90Days = 7776000;
-  int? attempts;
+  int attempts = 1;
   int best = 0;
+  double currentStreakInSeconds = 0;
 
   @override
   void initState() {
     super.initState();
-    durationCompleted = Duration(seconds: widget.currentStreakInSeconds.toInt());
-    attempts = widget.attempts;
-    best = widget.best;
-    durationRemaining = Duration(seconds: secondsIn90Days - widget.currentStreakInSeconds.toInt());
-    startTimer();
+    setValues();
   }
 
   @override
@@ -43,21 +40,21 @@ class _DashboardState extends State<Dashboard> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Colors.black,
+      ),
       body: Container(
         color: Colors.black,
         padding:  EdgeInsets.symmetric(horizontal: MediaQuery.of(context).size.width * .08,vertical: MediaQuery.of(context).size.height * .08),
         width: double.infinity,
         child: Column(
           children: [
-            Container(
-              margin: EdgeInsets.only( top : MediaQuery.of(context).size.height * .08),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  DocumentationTemplate(label: 'Best', value: best, descriptor: 'days'),
-                  DocumentationTemplate(label: 'Attempts', value: attempts, descriptor: 'times'),
-                ],
-              ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                DocumentationTemplate(label: 'Best', value: best, descriptor: 'days'),
+                DocumentationTemplate(label: 'Attempts', value: attempts, descriptor: 'times'),
+              ],
             ),
             Container(
                 margin: EdgeInsets.only(top: MediaQuery.of(context).size.height * 0.11),
@@ -76,22 +73,57 @@ class _DashboardState extends State<Dashboard> {
                   setValueInLocalStorage(DateTime.now().millisecondsSinceEpoch/1000);
                 });
                 startTimer();
-                _preferences.setInt('attempts', attempts!);
+                _preferences.setInt('attempts', attempts);
               } ,
               icon: Image.asset(
                 'assets/images/relapse.png',
               ),
             ),
             Container(
-                margin: EdgeInsets.only(top: MediaQuery.of(context).size.height * 0.12),
+                margin: EdgeInsets.only(top: MediaQuery.of(context).size.height * 0.09),
                 child: BuildTime(duration : durationRemaining , isCompleted : false)),
           ],
         ),
       ),
+      drawer: Drawer(
+        child: SafeArea(
+          child: Container(
+            color: Colors.black87,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                TextButton(
+                    onPressed: (){
+                      resetValues();
+                    },
+                    child:  Row(
+                      children: const [
+                        Icon(
+                            Icons.delete,
+                          color: Colors.greenAccent,
+                        ),
+                        Text(
+                            'Reset All',
+                          style: TextStyle(
+                            fontSize: 18,
+                            color: Colors.white,
+                            letterSpacing: 1
+                          ),
+                        ),
+                      ],
+                    )
+                )
+              ],
+            ),
+          ),
+        ),
+      ),
+
+      drawerScrimColor: Colors.black,
     );
   }
 
-  void calculateTime() {
+  void calculateCurrentStreak() {
     const addSeconds = 1;
     final secondsCompleted = durationCompleted.inSeconds + addSeconds;
     final secondsRemaining = durationRemaining.inSeconds - addSeconds;
@@ -99,12 +131,21 @@ class _DashboardState extends State<Dashboard> {
       durationCompleted = Duration(seconds: secondsCompleted);
       durationRemaining = Duration(seconds: secondsRemaining);
     });
-    final days = durationCompleted.inDays.remainder(365);
+    final days = durationCompleted.inDays;
     updateBest(days);
   }
 
+  void setValues(){
+    currentStreakInSeconds= widget.currentStreakInSeconds;
+    durationCompleted = Duration(seconds: currentStreakInSeconds.toInt());
+    attempts = widget.attempts;
+    best = widget.best;
+    durationRemaining = Duration(seconds: secondsIn90Days - currentStreakInSeconds.toInt());
+    startTimer();
+  }
+
   void startTimer() {
-    timer = Timer.periodic(const Duration(seconds: 1), (timer) => calculateTime());
+    timer = Timer.periodic(const Duration(seconds: 1), (timer) => calculateCurrentStreak());
   }
 
   void setValueInLocalStorage(startTimeInSeconds) async {
@@ -120,5 +161,18 @@ class _DashboardState extends State<Dashboard> {
         best = days;
       });
     }
+  }
+
+  void resetValues() async{
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    prefs.setInt('attempts', 1);
+    prefs.setInt('best', 0);
+    prefs.setDouble('startTimeInSeconds', 0);
+    setState(() {
+      attempts = prefs.getInt('attempts')!;
+      best = prefs.getInt('best')!;
+      durationCompleted = const Duration();
+      durationRemaining = Duration(seconds: secondsIn90Days);
+    });
   }
 }

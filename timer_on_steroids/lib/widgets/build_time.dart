@@ -21,7 +21,7 @@ class BuildTime extends StatelessWidget {
     final minutes = twoDigits(duration.inMinutes.remainder(60));
     final seconds = twoDigits(duration.inSeconds.remainder(60));
     final hours = twoDigits(duration.inHours.remainder(24));
-    final days = duration.inDays.remainder(365).toString();
+    final days = duration.inDays.toString();
     return isCompleted ? Container(
       margin: const EdgeInsets.all(30),
       child: Stack(

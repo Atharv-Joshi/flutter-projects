@@ -15,7 +15,7 @@ class DocumentationTemplate extends StatelessWidget {
           label,
           style: const TextStyle(
               color: Colors.pinkAccent,
-              fontSize: 16,
+              fontSize: 18,
               letterSpacing: 1,
               fontWeight: FontWeight.bold
           ),
