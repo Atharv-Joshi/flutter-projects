@@ -2,7 +2,7 @@
     package="com.example.timer_on_steroids">
    <application
         android:label="timer_on_steroids"
-        android:icon="@mipmap/ic_launcher">
+        android:icon="@mipmap/launcher_icon">
         <activity
             android:name=".MainActivity"
             android:launchMode="singleTop"

@@ -93,9 +93,9 @@ class _DashboardState extends State<Dashboard> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 TextButton(
-                    onPressed: (){
-                      resetValues();
-                    },
+                    onPressed: resetValues
+
+                    ,
                     child:  Row(
                       children: const [
                         Icon(
@@ -141,6 +141,9 @@ class _DashboardState extends State<Dashboard> {
     attempts = widget.attempts;
     best = widget.best;
     durationRemaining = Duration(seconds: secondsIn90Days - currentStreakInSeconds.toInt());
+    if(currentStreakInSeconds == 0){
+      setValueInLocalStorage(DateTime.now().millisecondsSinceEpoch/1000);
+    }
     startTimer();
   }
 
