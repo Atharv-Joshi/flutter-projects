@@ -8,7 +8,7 @@ class CustomDrawer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      width: MediaQuery.of(context).size.width * 0.6,
+      width: MediaQuery.of(context).orientation == Orientation.landscape ? MediaQuery.of(context).size.width * 0.25 : MediaQuery.of(context).size.width * 0.5,
       child: ClipRRect(
         borderRadius: const BorderRadius.only(topRight: Radius.circular(50) , bottomRight:Radius.circular(50) ),
         child: Drawer(

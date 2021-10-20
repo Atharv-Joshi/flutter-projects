@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:timer_on_steroids/widgets/custom_divider.dart';
 
 class DocumentationTemplate extends StatelessWidget {
   final String label;

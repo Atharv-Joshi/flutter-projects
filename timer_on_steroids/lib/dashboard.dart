@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:timer_on_steroids/widgets/build_time.dart';
 import 'package:timer_on_steroids/widgets/documentation_template.dart';
@@ -40,52 +41,113 @@ class _DashboardState extends State<Dashboard> {
 
   @override
   Widget build(BuildContext context) {
+
+    Widget dashBoard = MediaQuery.of(context).orientation == Orientation.portrait ?
+        //dashboard for potrait ----------------
+    Container(
+      color: Colors.black,
+      padding:  EdgeInsets.symmetric(horizontal: MediaQuery.of(context).size.width * .08,vertical: MediaQuery.of(context).size.height * .03),
+      width: double.infinity,
+      child: Column(
+        children: [
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              DocumentationTemplate(label: 'Best', value: best, descriptor: 'days'),
+              DocumentationTemplate(label: 'Attempts', value: attempts, descriptor: 'times'),
+            ],
+          ),
+          Container(
+              child: BuildTime(duration: durationCompleted , isCompleted : true)
+          ),
+          IconButton(
+            iconSize: 50,
+            tooltip: 'Relapse',
+            onPressed:
+                () async {
+              timer!.cancel();
+              SharedPreferences _preferences = await SharedPreferences.getInstance();
+              setState(() {
+                attempts = _preferences.getInt('attempts')! + 1;
+                durationCompleted = const Duration();
+                durationRemaining = const Duration(seconds: 7776000);
+                setValueInLocalStorage(DateTime.now().millisecondsSinceEpoch/1000);
+              });
+              startTimer();
+              _preferences.setInt('attempts', attempts);
+            } ,
+            icon: Image.asset(
+              'assets/images/relapse.png',
+            ),
+          ),
+          Container(
+              margin: EdgeInsets.only(top: MediaQuery.of(context).size.height * 0.15),
+              child: BuildTime(duration : durationRemaining , isCompleted : false)),
+        ],
+      ),
+    )
+
+    //dashboard for landscape ----------
+
+    : Container(
+      color: Colors.black,
+      padding:  EdgeInsets.symmetric(horizontal: MediaQuery.of(context).size.width * .08,vertical: MediaQuery.of(context).size.height * .0),
+      width: double.infinity,
+      child: Column(
+        children: [
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Column(
+                children: [
+                  Container(
+                    margin: const EdgeInsets.only(bottom: 40),
+                      child: DocumentationTemplate(label: 'Best', value: best, descriptor: 'days')),
+                  DocumentationTemplate(label: 'Attempts', value: attempts, descriptor: 'times'),
+                ],
+              ),
+              Container(
+                  child: BuildTime(duration: durationCompleted , isCompleted : true)
+              ),
+            ],
+          ),
+          Container(
+              margin: EdgeInsets.only(bottom: MediaQuery.of(context).size.height * 0.15),
+              child: BuildTime(duration : durationRemaining , isCompleted : false)),
+        ],
+      ),
+    );
+
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.black,
-      ),
-      body: Container(
-        color: Colors.black,
-        padding:  EdgeInsets.symmetric(horizontal: MediaQuery.of(context).size.width * .08,vertical: MediaQuery.of(context).size.height * .03),
-        width: double.infinity,
-        child: Column(
-          children: [
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                DocumentationTemplate(label: 'Best', value: best, descriptor: 'days'),
-                DocumentationTemplate(label: 'Attempts', value: attempts, descriptor: 'times'),
-              ],
+        actions: [
+          MediaQuery.of(context).orientation == Orientation.landscape ? IconButton(
+            iconSize: 50,
+            tooltip: 'Relapse',
+            onPressed:
+                () async {
+              timer!.cancel();
+              SharedPreferences _preferences = await SharedPreferences.getInstance();
+              setState(() {
+                attempts = _preferences.getInt('attempts')! + 1;
+                durationCompleted = const Duration();
+                durationRemaining = const Duration(seconds: 7776000);
+                setValueInLocalStorage(DateTime.now().millisecondsSinceEpoch/1000);
+              });
+              startTimer();
+              _preferences.setInt('attempts', attempts);
+            } ,
+            icon: Image.asset(
+              'assets/images/relapse.png',
             ),
-            Container(
-                margin: EdgeInsets.only(top: MediaQuery.of(context).size.height * 0.05),
-                child: BuildTime(duration: durationCompleted , isCompleted : true)),
-            IconButton(
-              iconSize: 50,
-              tooltip: 'Relapse',
-              onPressed:
-                  () async {
-                timer!.cancel();
-                SharedPreferences _preferences = await SharedPreferences.getInstance();
-                setState(() {
-                  attempts = _preferences.getInt('attempts')! + 1;
-                  durationCompleted = const Duration();
-                  durationRemaining = const Duration(seconds: 7776000);
-                  setValueInLocalStorage(DateTime.now().millisecondsSinceEpoch/1000);
-                });
-                startTimer();
-                _preferences.setInt('attempts', attempts);
-              } ,
-              icon: Image.asset(
-                'assets/images/relapse.png',
-              ),
-            ),
-            Container(
-                margin: EdgeInsets.only(top: MediaQuery.of(context).size.height * 0.15),
-                child: BuildTime(duration : durationRemaining , isCompleted : false)),
-          ],
-        ),
+          ) : Container(),
+        ],
       ),
+      body: MediaQuery.of(context).orientation == Orientation.landscape ? SingleChildScrollView(
+        child: dashBoard,
+      )
+      : dashBoard,
       drawer: CustomDrawer(resetValues: resetValues ,),
     );
   }
