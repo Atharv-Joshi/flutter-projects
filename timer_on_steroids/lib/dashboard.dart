@@ -1,11 +1,7 @@
 import 'dart:async';
-
-import 'package:dynamic_themes/dynamic_themes.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:timer_on_steroids/themes.dart';
 import 'package:timer_on_steroids/widgets/build_time.dart';
 import 'package:timer_on_steroids/widgets/documentation_template.dart';
 import 'package:timer_on_steroids/widgets/custom_drawer.dart';

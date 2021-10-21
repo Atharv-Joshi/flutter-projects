@@ -1,7 +1,11 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 import 'package:timer_on_steroids/widgets/time_card.dart';
 
-class BuildTime extends StatelessWidget {
+import 'dynamic_circular_widget.dart';
+
+class BuildTime extends StatefulWidget {
 
   final Duration duration;
   final bool isCompleted;
@@ -13,36 +17,62 @@ class BuildTime extends StatelessWidget {
       }
       );
 
+  @override
+  State<BuildTime> createState() => _BuildTimeState();
+}
+
+class _BuildTimeState extends State<BuildTime> with SingleTickerProviderStateMixin {
   String twoDigits(int n) => n.toString().padLeft(2, '0');
 
+  double percentValue = 0.0;
+  double newPercentage = 0.0;
+  AnimationController? _percentValueAnimationController;
+  double height = 0;
+  double width = 0;
+
+  @override
+  void initState() {
+    super.initState();
+    setState(() {
+      percentValue = 0.0;
+    });
+    _percentValueAnimationController = AnimationController(
+        vsync: this,
+        duration:  const Duration(seconds: 1)
+    )
+      ..addListener((){
+        setState(() {
+          percentValue =lerpDouble(percentValue,newPercentage,_percentValueAnimationController!.value)!;
+
+        });
+      });
+  }
 
   @override
   Widget build(BuildContext context) {
-    final minutes = twoDigits(duration.inMinutes.remainder(60));
-    final seconds = twoDigits(duration.inSeconds.remainder(60));
-    final hours = twoDigits(duration.inHours.remainder(24));
-    final days = duration.inDays.toString();
+    final minutes = twoDigits(widget.duration.inMinutes.remainder(60));
+    final seconds = twoDigits(widget.duration.inSeconds.remainder(60));
+    final hours = twoDigits(widget.duration.inHours.remainder(24));
+    final days = widget.duration.inDays.toString();
+    height = MediaQuery.of(context).size.height;
+    width = MediaQuery.of(context).size.width;
     ThemeData theme = Theme.of(context);
-    return isCompleted ? Container(
+    setState(() {
+      percentValue = newPercentage;
+      newPercentage = widget.duration.inSeconds/77760;
+      _percentValueAnimationController!.forward(from: 0.0);
+    });
+    return widget.isCompleted ? Container(
       margin: const EdgeInsets.all(30),
       child: Stack(
         alignment: AlignmentDirectional.center,
         children: [
           Container(
-            decoration:  BoxDecoration(
-                // color: Colors.greenAccent,
-                borderRadius: BorderRadius.circular(100)
+            child: DynamicRingWidget.buildRingAnimation(
+              height: height/2,
+              width: width/2,
+              percentValue: percentValue,
             ),
-            height: 200,
-            width: 200,
-          ),
-          Container(
-            decoration:  BoxDecoration(
-                // color: Colors.white,
-                borderRadius: BorderRadius.circular(100)
-            ),
-            height: 180,
-            width: 180,
           ),
           Column(
             children: [
@@ -67,7 +97,6 @@ class BuildTime extends StatelessWidget {
               ),
             ],
           ),
-
         ],
       ),
     ) : Text(
