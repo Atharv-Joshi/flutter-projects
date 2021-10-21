@@ -22,6 +22,7 @@ class BuildTime extends StatelessWidget {
     final seconds = twoDigits(duration.inSeconds.remainder(60));
     final hours = twoDigits(duration.inHours.remainder(24));
     final days = duration.inDays.toString();
+    ThemeData theme = Theme.of(context);
     return isCompleted ? Container(
       margin: const EdgeInsets.all(30),
       child: Stack(
@@ -29,7 +30,7 @@ class BuildTime extends StatelessWidget {
         children: [
           Container(
             decoration:  BoxDecoration(
-                color: Colors.greenAccent,
+                // color: Colors.greenAccent,
                 borderRadius: BorderRadius.circular(100)
             ),
             height: 200,
@@ -37,7 +38,7 @@ class BuildTime extends StatelessWidget {
           ),
           Container(
             decoration:  BoxDecoration(
-                color: Colors.black,
+                // color: Colors.white,
                 borderRadius: BorderRadius.circular(100)
             ),
             height: 180,
@@ -72,11 +73,7 @@ class BuildTime extends StatelessWidget {
     ) : Text(
       'ONLY $days Days ${hours}h ${minutes}m ${seconds}s REMAINING',
       textAlign: TextAlign.center,
-      style: const TextStyle(
-          color: Colors.white,
-        fontWeight: FontWeight.bold,
-        fontSize: 17
-      ),
+      style: theme.textTheme.bodyText2,
     );
   }
 }

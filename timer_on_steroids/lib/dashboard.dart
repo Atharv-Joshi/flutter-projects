@@ -1,9 +1,11 @@
 import 'dart:async';
 
+import 'package:dynamic_themes/dynamic_themes.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:timer_on_steroids/themes.dart';
 import 'package:timer_on_steroids/widgets/build_time.dart';
 import 'package:timer_on_steroids/widgets/documentation_template.dart';
 import 'package:timer_on_steroids/widgets/custom_drawer.dart';
@@ -41,11 +43,11 @@ class _DashboardState extends State<Dashboard> {
 
   @override
   Widget build(BuildContext context) {
-
+    ThemeData theme = Theme.of(context);
     Widget dashBoard = MediaQuery.of(context).orientation == Orientation.portrait ?
         //dashboard for potrait ----------------
     Container(
-      color: Colors.black,
+      color: theme.primaryColor,
       padding:  EdgeInsets.symmetric(horizontal: MediaQuery.of(context).size.width * .08,vertical: MediaQuery.of(context).size.height * .03),
       width: double.infinity,
       child: Column(
@@ -90,7 +92,7 @@ class _DashboardState extends State<Dashboard> {
     //dashboard for landscape ----------
 
     : Container(
-      color: Colors.black,
+      color: theme.primaryColor,
       padding:  EdgeInsets.symmetric(horizontal: MediaQuery.of(context).size.width * .08,vertical: MediaQuery.of(context).size.height * .0),
       width: double.infinity,
       child: Column(
@@ -120,7 +122,6 @@ class _DashboardState extends State<Dashboard> {
 
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.black,
         actions: [
           MediaQuery.of(context).orientation == Orientation.landscape ? IconButton(
             iconSize: 50,

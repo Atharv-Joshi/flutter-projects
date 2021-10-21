@@ -5,11 +5,12 @@ class CustomDivider extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    ThemeData theme = Theme.of(context);
     return Container(
       margin: const EdgeInsets.symmetric(horizontal: 10),
-      child: const Divider(
+      child:  Divider(
         height: 10,
-        color: Colors.grey,
+        color: theme.dividerColor,
       ),
     );
   }

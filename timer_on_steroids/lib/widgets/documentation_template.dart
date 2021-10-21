@@ -8,6 +8,7 @@ class DocumentationTemplate extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    ThemeData theme = Theme.of(context);
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -24,11 +25,7 @@ class DocumentationTemplate extends StatelessWidget {
           children: [
             Text(
               value.toString(),
-              style: const TextStyle(
-                  color: Colors.deepPurpleAccent,
-                  fontSize: 32,
-                  fontWeight: FontWeight.bold
-              ),
+              style: theme.textTheme.subtitle1
             ),
             Container(
               margin: const EdgeInsets.only(left: 5),
