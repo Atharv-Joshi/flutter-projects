@@ -79,7 +79,7 @@ class _DashboardState extends State<Dashboard> {
             ),
           ),
           Container(
-              margin: EdgeInsets.only(top: MediaQuery.of(context).size.height * 0.15),
+              margin: EdgeInsets.only(top: MediaQuery.of(context).size.height * 0.08),
               child: BuildTime(duration : durationRemaining , isCompleted : false)),
         ],
       ),

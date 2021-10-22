@@ -9,9 +9,11 @@ class AppThemes {
 
 final themeCollection = ThemeCollection(
   themes: {
+    //light theme
     AppThemes.light: ThemeData(
         primaryColor: Colors.white,
       primaryColorDark: Colors.grey[100],
+      shadowColor: Colors.grey[400],
       dividerColor: Colors.black,
       iconTheme: const IconThemeData(color: Colors.deepPurpleAccent),
       appBarTheme: const AppBarTheme(
@@ -37,9 +39,12 @@ final themeCollection = ThemeCollection(
         ),
       ),
     ),
+
+    //dark theme
     AppThemes.dark: ThemeData(
       primaryColor: Colors.black,
       primaryColorDark: Colors.black87,
+      shadowColor: Colors.grey,
       dividerColor: Colors.white,
       iconTheme: const IconThemeData(color: Colors.greenAccent),
       appBarTheme: const AppBarTheme(

@@ -63,7 +63,7 @@ class _BuildTimeState extends State<BuildTime> with SingleTickerProviderStateMix
       _percentValueAnimationController!.forward(from: 0.0);
     });
     return widget.isCompleted ? Container(
-      margin: const EdgeInsets.all(30),
+      margin: MediaQuery.of(context).orientation == Orientation.landscape ? const EdgeInsets.all(30) : const EdgeInsets.all(0),
       child: Stack(
         alignment: AlignmentDirectional.center,
         children: [
@@ -72,6 +72,7 @@ class _BuildTimeState extends State<BuildTime> with SingleTickerProviderStateMix
               height: height/2,
               width: width/2,
               percentValue: percentValue,
+              theme: theme
             ),
           ),
           Column(
