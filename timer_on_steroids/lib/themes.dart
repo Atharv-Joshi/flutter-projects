@@ -15,6 +15,18 @@ final themeCollection = ThemeCollection(
       primaryColorDark: Colors.grey[100],
       shadowColor: Colors.grey[400],
       dividerColor: Colors.black,
+      dialogTheme:  DialogTheme(
+        backgroundColor: Colors.grey[100],
+        elevation: 0,
+        titleTextStyle: const TextStyle(
+            color: Colors.deepPurpleAccent,
+            fontSize: 20
+        ),
+        contentTextStyle: const TextStyle(
+            color: Colors.black,
+            fontSize: 16
+        ),
+      ),
       iconTheme: const IconThemeData(color: Colors.deepPurpleAccent),
       appBarTheme: const AppBarTheme(
         color: Colors.white,
@@ -44,6 +56,18 @@ final themeCollection = ThemeCollection(
     AppThemes.dark: ThemeData(
       primaryColor: Colors.black,
       primaryColorDark: Colors.black87,
+      dialogTheme: const DialogTheme(
+        backgroundColor: Colors.black87,
+        elevation: 0,
+        titleTextStyle: TextStyle(
+          color: Colors.greenAccent,
+          fontSize: 20
+        ),
+        contentTextStyle: TextStyle(
+          color: Colors.white,
+          fontSize: 16
+        ),
+      ),
       shadowColor: Colors.grey,
       dividerColor: Colors.white,
       iconTheme: const IconThemeData(color: Colors.greenAccent),

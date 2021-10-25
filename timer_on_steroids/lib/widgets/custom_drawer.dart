@@ -1,5 +1,6 @@
 import 'package:dynamic_themes/dynamic_themes.dart';
 import 'package:flutter/material.dart';
+import 'package:timer_on_steroids/widgets/confirm_dialog_box.dart';
 import 'package:timer_on_steroids/widgets/custom_divider.dart';
 
 class CustomDrawer extends StatelessWidget {
@@ -8,6 +9,9 @@ class CustomDrawer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
+
+
     ThemeData theme = Theme.of(context);
     return SizedBox(
       width: MediaQuery.of(context).orientation == Orientation.landscape ? MediaQuery.of(context).size.width * 0.25 : MediaQuery.of(context).size.width * 0.5,
@@ -21,7 +25,10 @@ class CustomDrawer extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 TextButton(
-                    onPressed: (){resetValues();},
+                    // onPressed: (){resetValues();},
+                  onPressed: (){
+                    showDialog(context: context, builder: (context){return ConfirmDialogBox(onPressedFunction: resetValues);});
+                  },
                     child:  Row(
                       children:  [
                          Icon(
@@ -61,7 +68,9 @@ class CustomDrawer extends StatelessWidget {
                     ),
                   ],
                 )
-                )
+                ),
+                // const CustomDivider(),
+                const CustomDivider(),
               ],
             ),
           ),

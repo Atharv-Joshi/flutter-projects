@@ -3,8 +3,10 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:timer_on_steroids/widgets/build_time.dart';
+import 'package:timer_on_steroids/widgets/confirm_dialog_box.dart';
 import 'package:timer_on_steroids/widgets/documentation_template.dart';
 import 'package:timer_on_steroids/widgets/custom_drawer.dart';
+import 'package:timer_on_steroids/widgets/relapse_button.dart';
 
 class Dashboard extends StatefulWidget {
   final double currentStreakInSeconds;
@@ -39,7 +41,38 @@ class _DashboardState extends State<Dashboard> {
 
   @override
   Widget build(BuildContext context) {
+
     ThemeData theme = Theme.of(context);
+
+     relapseFunction () async {
+      timer!.cancel();
+      SharedPreferences _preferences = await SharedPreferences.getInstance();
+      setState(() {
+        attempts = _preferences.getInt('attempts')! + 1;
+        durationCompleted = const Duration();
+        durationRemaining = const Duration(seconds: 7776000);
+        setValueInLocalStorage(DateTime.now().millisecondsSinceEpoch/1000);
+      });
+      startTimer();
+      _preferences.setInt('attempts', attempts);
+      Navigator.pop(context);
+    }
+
+    void resetValues() async{
+      SharedPreferences prefs = await SharedPreferences.getInstance();
+      prefs.setInt('attempts', 1);
+      prefs.setInt('best', 0);
+      prefs.setDouble('startTimeInSeconds', 0);
+      setState(() {
+        attempts = prefs.getInt('attempts')!;
+        best = prefs.getInt('best')!;
+        durationCompleted = const Duration();
+        durationRemaining = Duration(seconds: secondsIn90Days);
+      });
+      Navigator.pop(context);
+    }
+
+
     Widget dashBoard = MediaQuery.of(context).orientation == Orientation.portrait ?
         //dashboard for potrait ----------------
     Container(
@@ -55,29 +88,8 @@ class _DashboardState extends State<Dashboard> {
               DocumentationTemplate(label: 'Attempts', value: attempts, descriptor: 'times'),
             ],
           ),
-          Container(
-              child: BuildTime(duration: durationCompleted , isCompleted : true)
-          ),
-          IconButton(
-            iconSize: 50,
-            tooltip: 'Relapse',
-            onPressed:
-                () async {
-              timer!.cancel();
-              SharedPreferences _preferences = await SharedPreferences.getInstance();
-              setState(() {
-                attempts = _preferences.getInt('attempts')! + 1;
-                durationCompleted = const Duration();
-                durationRemaining = const Duration(seconds: 7776000);
-                setValueInLocalStorage(DateTime.now().millisecondsSinceEpoch/1000);
-              });
-              startTimer();
-              _preferences.setInt('attempts', attempts);
-            } ,
-            icon: Image.asset(
-              'assets/images/relapse.png',
-            ),
-          ),
+          BuildTime(duration: durationCompleted , isCompleted : true),
+          RelapseButton(alertDialog: ConfirmDialogBox(onPressedFunction: relapseFunction,),),
           Container(
               margin: EdgeInsets.only(top: MediaQuery.of(context).size.height * 0.08),
               child: BuildTime(duration : durationRemaining , isCompleted : false)),
@@ -97,6 +109,7 @@ class _DashboardState extends State<Dashboard> {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Container(
                     margin: const EdgeInsets.only(bottom: 40),
@@ -104,9 +117,7 @@ class _DashboardState extends State<Dashboard> {
                   DocumentationTemplate(label: 'Attempts', value: attempts, descriptor: 'times'),
                 ],
               ),
-              Container(
-                  child: BuildTime(duration: durationCompleted , isCompleted : true)
-              ),
+              BuildTime(duration: durationCompleted , isCompleted : true),
             ],
           ),
           Container(
@@ -119,26 +130,7 @@ class _DashboardState extends State<Dashboard> {
     return Scaffold(
       appBar: AppBar(
         actions: [
-          MediaQuery.of(context).orientation == Orientation.landscape ? IconButton(
-            iconSize: 50,
-            tooltip: 'Relapse',
-            onPressed:
-                () async {
-              timer!.cancel();
-              SharedPreferences _preferences = await SharedPreferences.getInstance();
-              setState(() {
-                attempts = _preferences.getInt('attempts')! + 1;
-                durationCompleted = const Duration();
-                durationRemaining = const Duration(seconds: 7776000);
-                setValueInLocalStorage(DateTime.now().millisecondsSinceEpoch/1000);
-              });
-              startTimer();
-              _preferences.setInt('attempts', attempts);
-            } ,
-            icon: Image.asset(
-              'assets/images/relapse.png',
-            ),
-          ) : Container(),
+          MediaQuery.of(context).orientation == Orientation.landscape ? RelapseButton(alertDialog: ConfirmDialogBox(onPressedFunction: relapseFunction,)): Container(),
         ],
       ),
       body: MediaQuery.of(context).orientation == Orientation.landscape ? SingleChildScrollView(
@@ -147,7 +139,8 @@ class _DashboardState extends State<Dashboard> {
       : dashBoard,
       drawer: CustomDrawer(resetValues: resetValues ,),
     );
-  }
+
+  }//build ends
 
   void calculateCurrentStreak() {
     const addSeconds = 1;
@@ -192,16 +185,4 @@ class _DashboardState extends State<Dashboard> {
     }
   }
 
-  void resetValues() async{
-    SharedPreferences prefs = await SharedPreferences.getInstance();
-    prefs.setInt('attempts', 1);
-    prefs.setInt('best', 0);
-    prefs.setDouble('startTimeInSeconds', 0);
-    setState(() {
-      attempts = prefs.getInt('attempts')!;
-      best = prefs.getInt('best')!;
-      durationCompleted = const Duration();
-      durationRemaining = Duration(seconds: secondsIn90Days);
-    });
-  }
 }

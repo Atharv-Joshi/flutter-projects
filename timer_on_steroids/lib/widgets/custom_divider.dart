@@ -8,8 +8,9 @@ class CustomDivider extends StatelessWidget {
     ThemeData theme = Theme.of(context);
     return Container(
       margin: const EdgeInsets.symmetric(horizontal: 10),
-      child:  Divider(
+      child: Divider(
         height: 10,
+        thickness: 1,
         color: theme.dividerColor,
       ),
     );
