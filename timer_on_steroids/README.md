@@ -1,4 +1,4 @@
-## Addiction Stopper
+## Timer on Steroids
 Dashboard | Drawer
 :--------: | :-----:
 ![dashboard-p](https://user-images.githubusercontent.com/53505850/138097811-5ca16d2a-9ebb-484c-808e-d61f604f0598.jpg) | ![drawer-p](https://user-images.githubusercontent.com/53505850/138097850-f480e95f-f0ee-4399-8c7c-6b26dfb2df2b.jpg)
