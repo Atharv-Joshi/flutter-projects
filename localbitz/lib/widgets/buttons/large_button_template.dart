@@ -20,7 +20,6 @@ class LargeButtonTemplate extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.fromLTRB(10, 0, 0, 0),
       height: MediaQuery.of(context).size.height * 0.04,
       child: TextButton(
         style: ButtonStyle(
@@ -45,7 +44,7 @@ class LargeButtonTemplate extends StatelessWidget {
               ),
               if(isArrow) Icon(
                 Icons.arrow_forward_sharp,
-                color: Color(textColor),
+                color: textColor,
               )
             ],
           ),

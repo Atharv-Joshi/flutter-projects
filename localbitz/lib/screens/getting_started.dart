@@ -1,12 +1,12 @@
 import 'dart:async';
-
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:localbitz/screens/Authentication/login.dart';
-import 'package:localbitz/screens/Authentication/signup.dart';
+import 'package:localbitz/controllers/authentication_form_controller.dart';
 import 'package:localbitz/widgets/buttons/large_button_template.dart';
 import 'package:localbitz/widgets/footer.dart';
+import 'package:localbitz/widgets/forms/loginForm.dart';
+import 'package:localbitz/widgets/forms/signUpForm.dart';
 import 'package:localbitz/widgets/getting_started_info_template.dart';
 
 class GettingStarted extends StatefulWidget {
@@ -21,6 +21,9 @@ class _GettingStartedState extends State<GettingStarted> {
   List<String> welcomeMessages = ['Hungry ?', 'Unexpected Guests ?', 'Cooking gone wrong ?', 'Movie marathon ?', 'Game night ?', 'Late night at office ?'];
   String? text;
   int counter = 0;
+  final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
+  bool isLoginForm = true;
+  AuthenticationFormController _authenticationFormController = Get.put(AuthenticationFormController());
 
   @override
   void initState() {
@@ -37,12 +40,13 @@ class _GettingStartedState extends State<GettingStarted> {
 
   @override
   void dispose() {
-    // TODO: implement dispose
+    super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      key: _scaffoldKey,
       body: Container(
         color: Color(0xffEFEFEF).withOpacity(.2),
         width: double.infinity,
@@ -75,13 +79,25 @@ class _GettingStartedState extends State<GettingStarted> {
                                 ),
                               ),
                             ),
-                            LargeButtonTemplate(text: 'Sign in', function: (){
-                              Get.to(() => Login());
-                            }, bgColor: Colors.transparent, textColor: Colors.white, isArrow: false,),
-                            LargeButtonTemplate(text: 'Sign Up', function: (){
-                              Get.to(() => SignUp());
-                            }, bgColor: Colors.white, textColor: Colors.black, isArrow: false),
+                            LargeButtonTemplate(text: 'Sign in',
+                              function: (){
+                              setState(() {
+                                _authenticationFormController.updateIsLogIn(true);
+                                _scaffoldKey.currentState!.openEndDrawer();
+                              });
+                            },
+                              bgColor: Colors.transparent, textColor: Colors.white, isArrow: false,),
+                            Container(
+                              margin: EdgeInsets.only(left: 10),
+                              child: LargeButtonTemplate(text: 'Sign Up',
+                                  function: (){
+                                setState(() {
+                                  _authenticationFormController.updateIsLogIn(false);
+                                  _scaffoldKey.currentState!.openEndDrawer();
+                                });
 
+                              }, bgColor: Colors.white, textColor: Colors.black, isArrow: false),
+                            ),
                           ],
                         ),
                         Container(
@@ -144,6 +160,12 @@ class _GettingStartedState extends State<GettingStarted> {
               Footer(),
             ],
           ),
+        ),
+      ),
+      endDrawer: Container(
+        width: MediaQuery.of(context).size.width * 0.35,
+        child: Drawer(
+          child: _authenticationFormController.isLogin.value ?  LoginForm() : SignUpForm(),
         ),
       ),
     );

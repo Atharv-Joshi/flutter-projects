@@ -6,8 +6,14 @@ final borderDecoration = InputDecoration(
   hintStyle: TextStyle(
       color: Color(0xff2C2929).withOpacity(.5)
   ),
-  border: OutlineInputBorder(
-      borderRadius: BorderRadius.circular(24),
-      borderSide: BorderSide.none
+  enabledBorder: OutlineInputBorder(
+      borderRadius: BorderRadius.circular(0),
+      borderSide:  BorderSide(color:  Colors.grey[400] ?? Colors.grey , width: 1 , style:  BorderStyle.solid)
+    // borderSide: BorderSide.none
+  ),
+  focusedBorder: OutlineInputBorder(
+      borderRadius: BorderRadius.circular(0),
+      borderSide:  BorderSide(color:  Colors.grey[400] ?? Colors.grey , width: 1 , style:  BorderStyle.solid)
+    // borderSide: BorderSide.none
   ),
 );
