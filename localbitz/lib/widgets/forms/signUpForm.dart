@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:localbitz/constants/decoration.dart';
 import 'package:localbitz/models/customer.dart';
 import 'package:localbitz/screens/home.dart';
-import 'package:localbitz/widgets/buttons/largeButtonTemplate.dart';
+import 'package:localbitz/widgets/buttons/large_button_template.dart';
 import 'package:email_validator/email_validator.dart';
 import 'package:get/get.dart';
-import '../../services/apiCalls/customerApiCalls.dart';
+import '../../services/apiCalls/customer_api_calls.dart';
 
 class SignUpForm extends StatefulWidget {
 

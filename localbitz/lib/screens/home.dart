@@ -8,7 +8,7 @@ class Home extends StatelessWidget {
     return Scaffold(
       body: Container(
         child: Center(
-          child: Text('Home page'),
+          child: SelectableText('Home page'),
         ),
       ),
     );

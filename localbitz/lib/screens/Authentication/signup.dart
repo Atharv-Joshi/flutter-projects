@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:localbitz/widgets/buttons/customBackButton.dart';
+import 'package:localbitz/widgets/buttons/custom_back_button.dart';
 import 'package:localbitz/widgets/forms/signUpForm.dart';
 
 

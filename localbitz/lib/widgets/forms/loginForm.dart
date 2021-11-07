@@ -2,8 +2,8 @@ import 'package:email_validator/email_validator.dart';
 import 'package:flutter/material.dart';
 import 'package:localbitz/constants/decoration.dart';
 import 'package:localbitz/screens/home.dart';
-import 'package:localbitz/services/apiCalls/customerApiCalls.dart';
-import 'package:localbitz/widgets/buttons/largeButtonTemplate.dart';
+import 'package:localbitz/services/apiCalls/customer_api_calls.dart';
+import 'package:localbitz/widgets/buttons/large_button_template.dart';
 import 'package:get/get.dart';
 
 class LoginForm extends StatefulWidget {
