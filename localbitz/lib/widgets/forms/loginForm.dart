@@ -107,7 +107,7 @@ class _LoginFormState extends State<LoginForm> {
                         Get.snackbar('Error', customer);
                       }
                       else{
-                        Get.offAll(() => Home());
+                        Get.offNamed('/home');
                       }
                     }
                   }, bgColor: Color(0xffF94144), textColor: Color(0xffFFFFFF), isArrow: false)

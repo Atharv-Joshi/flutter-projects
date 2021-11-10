@@ -31,6 +31,7 @@ class _GettingStartedState extends State<GettingStarted> {
     text = welcomeMessages[0];
     super.initState();
     timer = Timer.periodic(Duration(seconds: 3), (timer) {
+
       setState(() {
         text = welcomeMessages[counter % welcomeMessages.length];
         counter++;
@@ -40,6 +41,7 @@ class _GettingStartedState extends State<GettingStarted> {
 
   @override
   void dispose() {
+    timer!.cancel();
     super.dispose();
   }
 

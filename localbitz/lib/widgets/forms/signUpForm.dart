@@ -142,13 +142,15 @@ class _SignUpFormState extends State<SignUpForm> {
                       }
                       else{
                         Customer customer = response;
-                        Get.offAll(() => Home());
+                        Get.offNamed('/home');
                       }
                     }
                   }, bgColor: Color(0xffF94144), textColor: Color(0xffFFFFFF), isArrow: false)
               ),
-              !isAPICallDone ? CircularProgressIndicator(
-                color: Colors.black,
+              !isAPICallDone ? Center(
+                child: CircularProgressIndicator(
+                  color: Colors.black,
+                ),
               ) : Container()
             ],
           )
