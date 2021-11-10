@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:localbitz/constants/decoration.dart';
 import 'package:localbitz/controllers/authentication_form_controller.dart';
 import 'package:localbitz/models/customer.dart';
-import 'package:localbitz/screens/home.dart';
 import 'package:localbitz/widgets/buttons/large_button_template.dart';
 import 'package:email_validator/email_validator.dart';
 import 'package:get/get.dart';
