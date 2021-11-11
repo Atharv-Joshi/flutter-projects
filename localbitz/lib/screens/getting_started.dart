@@ -180,7 +180,7 @@ class _GettingStartedState extends State<GettingStarted> {
                                   children: [
                                     Container(
                                       margin: EdgeInsets.only(top: 120),
-                                      child: Text(
+                                      child: SelectableText(
                                         text!,
                                         style: TextStyle(
                                           fontSize: 40,
@@ -190,7 +190,7 @@ class _GettingStartedState extends State<GettingStarted> {
                                     ),
                                     Container(
                                       margin: EdgeInsets.only(top: 30),
-                                      child: Text(
+                                      child: SelectableText(
                                         'Order food from favourite Chefs near you.',
                                         style: TextStyle(
                                           fontSize: 30,

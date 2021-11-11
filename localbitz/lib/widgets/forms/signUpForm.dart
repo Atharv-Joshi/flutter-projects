@@ -23,6 +23,7 @@ class _SignUpFormState extends State<SignUpForm> {
   String password='';
 
   bool isAPICallDone = true;
+  bool isHovering = false;
 
   CustomerApiCalls _apiCalls = CustomerApiCalls();
   AuthenticationFormController _authenticationFormController = Get.find<AuthenticationFormController>();
@@ -36,7 +37,12 @@ class _SignUpFormState extends State<SignUpForm> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              IconButton(onPressed: (){Navigator.pop(context);}, icon: Icon(Icons.arrow_back),splashRadius: 24, hoverColor: Colors.transparent,),
+              IconButton(
+                onPressed: (){Navigator.pop(context);},
+                icon: Icon(Icons.arrow_back ,),
+                splashRadius: 20,
+                hoverColor: Colors.grey[300],
+              ),
               SelectableText(
                 'Sign up',
                 style: TextStyle(
@@ -48,6 +54,9 @@ class _SignUpFormState extends State<SignUpForm> {
                 children: [
                   SelectableText('or'),
                   TextButton(
+                      style: ButtonStyle(
+                        overlayColor: MaterialStateProperty.all(Colors.transparent),
+                      ),
                       onPressed: (){
                         setState(() {
                           _authenticationFormController.updateIsLogIn(true);
@@ -123,11 +132,20 @@ class _SignUpFormState extends State<SignUpForm> {
                   decoration: borderDecoration.copyWith(hintText: 'Confirm Password'),
                 ),
               ),
+              SizedBox(
+                height: 30,
+              ),
               Container(
-                  margin: EdgeInsets.only(top: 40),
-                  height: 50,
-                  width: MediaQuery.of(context).size.width * 0.17,
-                  child: LargeButtonTemplate(text: 'Sign Up', function: () async {
+                height: 50,
+                color: isHovering ? Colors.black : Colors.red,
+                width: MediaQuery.of(context).size.width * 0.17,
+                child: InkWell(
+                  onHover: (value){
+                    setState(() {
+                      isHovering = value;
+                    });
+                  },
+                  onTap: () async {
                     if(_formKey.currentState!.validate()){
                       setState(() {
                         isAPICallDone = false;
@@ -144,7 +162,18 @@ class _SignUpFormState extends State<SignUpForm> {
                         Get.offNamed('/home');
                       }
                     }
-                  }, bgColor: Color(0xffF94144), textColor: Color(0xffFFFFFF), isArrow: false)
+                  },
+                  child: Center(
+                    child: Text(
+                      'Sign up',
+                      style: TextStyle(
+                          color: Color(0xffFFFFFF),
+                          fontSize: 16,
+                          fontWeight: FontWeight.bold
+                      ),
+                    ),
+                  ),
+                ),
               ),
               !isAPICallDone ? Center(
                 child: CircularProgressIndicator(
