@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-class GettingStartedInfoTemplate extends StatelessWidget {
+class GettingStartedInfoTemplate extends StatefulWidget {
 
   final String image;
   final String title;
@@ -18,7 +18,14 @@ class GettingStartedInfoTemplate extends StatelessWidget {
 }
       );
 
+  @override
+  State<GettingStartedInfoTemplate> createState() => _GettingStartedInfoTemplateState();
+}
 
+class _GettingStartedInfoTemplateState extends State<GettingStartedInfoTemplate> {
+  bool isHovering = false;
+  double buttonTextSize = 16;
+  Color? buttonTextColor = Colors.deepOrange;
 
   @override
   Widget build(BuildContext context) {
@@ -28,11 +35,11 @@ class GettingStartedInfoTemplate extends StatelessWidget {
     return Container(
       child: Column(
         children: [
-          Image.asset(image , height: 100,),
+          Image.asset(widget.image , height: 100,),
           Container(
               margin: EdgeInsets.fromLTRB(0, 20, 0, 10),
               child: SelectableText(
-                title,
+                widget.title,
                 textAlign: TextAlign.center,
                 style: TextStyle(
                     fontSize: 28,
@@ -44,7 +51,7 @@ class GettingStartedInfoTemplate extends StatelessWidget {
             width: 200,
             margin: EdgeInsets.only(bottom: 10),
               child: SelectableText(
-                  description,
+                  widget.description,
                 textAlign: TextAlign.center,
                 style: TextStyle(
                     fontSize: 16,
@@ -52,23 +59,42 @@ class GettingStartedInfoTemplate extends StatelessWidget {
                 ),
               )
           ),
-          TextButton(
-              onPressed: (){onPressed;},
+          MouseRegion(
+            onEnter: (value){
+              setState(() {
+                buttonTextSize = 18;
+                buttonTextColor = Colors.red;
+              });
+            },
+            onExit: (value){
+              setState(() {
+                buttonTextSize = 16;
+                buttonTextColor = Colors.deepOrange;
+              });
+            },
+            child: InkWell(
+              hoverColor: Colors.transparent,
+              onTap: (){widget.onPressed;},
               child: Row(
                 children: [
-                  Text(
-                    buttonTitle,
-                    style: TextStyle(
-                      fontSize: 16,
-                        fontWeight: FontWeight.bold
-                    ),
+                  AnimatedDefaultTextStyle(
+                      child: Text(widget.buttonTitle),
+                      style: TextStyle(
+                          fontSize: buttonTextSize,
+                          color: buttonTextColor,
+                          fontWeight: FontWeight.bold
+                      ),
+                      duration: Duration(microseconds: 1000)
+
                   ),
                   Icon(
                     Icons.arrow_forward_ios_outlined,
-                    size: 12,
+                    size: 14,
+                    color: Colors.deepOrange,
                   )
                 ],
-              )
+              ),
+            ),
           )
         ],
       ),

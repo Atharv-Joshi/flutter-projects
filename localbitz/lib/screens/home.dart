@@ -75,26 +75,8 @@ class Home extends StatelessWidget {
               ),
             ),
           ),
-          // GridView.count(
-          //     crossAxisCount: 3,
-          //   children: List.generate(20, (index) {
-          //     return Center(
-          //       child: Text(
-          //         'Item $index',
-          //       ),
-          //     );
-          //   }
-          // ),
-          // )
         ],
         ),
-        // child: GridView.count(
-        //   crossAxisCount: 3,
-        //   children: List.generate(20, (index) {
-        //     return CookCard();
-        //   }
-        //   ),
-        // ),
       ),
     );
   }

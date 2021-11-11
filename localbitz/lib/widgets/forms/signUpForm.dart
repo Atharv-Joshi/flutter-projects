@@ -36,7 +36,7 @@ class _SignUpFormState extends State<SignUpForm> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              IconButton(onPressed: (){Navigator.pop(context);}, icon: Icon(Icons.arrow_back)),
+              IconButton(onPressed: (){Navigator.pop(context);}, icon: Icon(Icons.arrow_back),splashRadius: 24, hoverColor: Colors.transparent,),
               SelectableText(
                 'Sign up',
                 style: TextStyle(

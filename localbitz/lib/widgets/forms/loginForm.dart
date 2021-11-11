@@ -32,7 +32,7 @@ class _LoginFormState extends State<LoginForm> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              IconButton(onPressed: (){Navigator.pop(context);}, icon: Icon(Icons.arrow_back)),
+              IconButton(onPressed: (){Navigator.pop(context);}, icon: Icon(Icons.arrow_back) ,splashRadius: 24, hoverColor: Colors.transparent,),
               SelectableText(
                   'Login',
                 style: TextStyle(

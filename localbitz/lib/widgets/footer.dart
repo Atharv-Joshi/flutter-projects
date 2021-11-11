@@ -62,13 +62,6 @@ class Footer extends StatelessWidget {
               ],
             ),
           ),
-          // SelectableText(
-          //   'Made with Flutter',
-          //   style: TextStyle(
-          //       fontSize: 16,
-          //       color: Colors.lightBlueAccent
-          //   ),
-          // ),
            Row(
             children: [
               IconButton(onPressed: _launchInstagram, icon: Image.asset('assets/images/instagram.png' ,),),

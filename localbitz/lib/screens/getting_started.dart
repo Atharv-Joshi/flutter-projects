@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:localbitz/controllers/authentication_form_controller.dart';
-import 'package:localbitz/widgets/buttons/large_button_template.dart';
 import 'package:localbitz/widgets/footer.dart';
 import 'package:localbitz/widgets/forms/loginForm.dart';
 import 'package:localbitz/widgets/forms/signUpForm.dart';
@@ -24,6 +23,7 @@ class _GettingStartedState extends State<GettingStarted> {
   final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
   bool isLoginForm = true;
   AuthenticationFormController _authenticationFormController = Get.put(AuthenticationFormController());
+  List _isHovering = [false, false,];
 
   @override
   void initState() {
@@ -48,120 +48,199 @@ class _GettingStartedState extends State<GettingStarted> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      extendBodyBehindAppBar:  true,
       key: _scaffoldKey,
-      body: Container(
-        color: Color(0xffEFEFEF).withOpacity(.2),
-        width: double.infinity,
-        child: SingleChildScrollView(
-          child: Column(
+      appBar: PreferredSize(
+        preferredSize: Size(MediaQuery.of(context).size.width , 1000),
+        child: Padding(
+          padding: EdgeInsets.all(20),
+          child: Row(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Stack(
+              SizedBox(width: 120,),
+              Expanded(
+                child: SelectableText(
+                  'LocalBitz',
+                  textAlign: TextAlign.center,
+                  style: GoogleFonts.dosis(
+                      letterSpacing: 2,
+                      textStyle: TextStyle(
+                          fontSize: 32,
+                          fontWeight: FontWeight.w500,
+                          color: Colors.white
+                      )
+                  ),
+                ),
+              ),
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Image.asset('assets/images/hero.jpg'),
-                  Container(
-                    margin: EdgeInsets.symmetric(horizontal: 10 , vertical: 10),
-                    child: Column(
-                      children: [
-                        Row(
-                          children: [
-                            Expanded(
-                              child: Container(
-                                margin: EdgeInsets.fromLTRB(160,0,0,10),
-                                child: SelectableText(
-                                  'LocalBitz',
-                                  textAlign: TextAlign.center,
-                                  style: GoogleFonts.dosis(
-                                    letterSpacing: 2,
-                                    textStyle: TextStyle(
-                                        fontSize: 32,
-                                        fontWeight: FontWeight.w500,
-                                        color: Colors.white
-                                    )
-                                  ),
-                                ),
-                              ),
-                            ),
-                            LargeButtonTemplate(text: 'Sign in',
-                              function: (){
-                              setState(() {
-                                _authenticationFormController.updateIsLogIn(true);
-                                _scaffoldKey.currentState!.openEndDrawer();
-                              });
-                            },
-                              bgColor: Colors.transparent, textColor: Colors.white, isArrow: false,),
-                            Container(
-                              margin: EdgeInsets.only(left: 10),
-                              child: LargeButtonTemplate(text: 'Sign Up',
-                                  function: (){
-                                setState(() {
-                                  _authenticationFormController.updateIsLogIn(false);
-                                  _scaffoldKey.currentState!.openEndDrawer();
-                                });
-
-                              }, bgColor: Colors.white, textColor: Colors.black, isArrow: false),
-                            ),
-                          ],
-                        ),
-                        Container(
-                          margin: EdgeInsets.only(top: 120),
-                          child: Text(
-                              text!,
-                            style: TextStyle(
-                              fontSize: 40,
-                              color: Colors.white,
-                            ),
-                          ),
-                        ),
-                        Container(
-                          margin: EdgeInsets.only(top: 30),
-                          child: Text(
-                              'Order food from you favourite Chefs near you.',
-                            style: TextStyle(
-                              fontSize: 30,
-                              color: Colors.white70,
-                            ),
-                          ),
-                        ),
-                      ],
+                  InkWell(
+                    onHover: (value){
+                      setState(() {
+                        _isHovering[0] = value;
+                      });
+                    },
+                    onTap: (){
+                      setState(() {
+                        _authenticationFormController.updateIsLogIn(true);
+                        _scaffoldKey.currentState!.openEndDrawer();
+                      });
+                    },
+                    child: Text(
+                      'Log In',
+                      style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 16,
+                          fontWeight: FontWeight.bold
+                      ),
                     ),
                   ),
+                  Container(
+                    margin: EdgeInsets.only(top: 10),
+                    child: Visibility(
+                      maintainAnimation: true,
+                      maintainState: true,
+                      maintainSize: true,
+                      visible: _isHovering[0],
+                      child: Container(
+                        height: 2,
+                        width: 35,
+                        color: Colors.white,
+                      ),
+                    ),
+                  )
                 ],
               ),
               Container(
-                margin: EdgeInsets.symmetric( vertical: 50),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                margin: EdgeInsets.symmetric(horizontal: 20),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    GettingStartedInfoTemplate(
-                      image: 'assets/images/food-delivery.jpg',
-                      title: 'Become a Delivery driver',
-                      description: 'As a delivery driver you\'ll be making reliable money- working anytime, anywhere' ,
-                      buttonTitle: 'Start earning',
-                      onPressed: (){},
-                    ),
-                    Container(
-                      margin: EdgeInsets.only(top: 50),
-                      child: GettingStartedInfoTemplate(
-                        image: 'assets/images/kitchen.jpg',
-                        title: 'Become a Partner',
-                        description: 'As a delivery driver you\'ll be making reliable money- working anytime, anywhere' ,
-                        buttonTitle: 'Sign up your kitchen',
-                        onPressed: (){},
+                    InkWell(
+                      onHover: (value){
+                        setState(() {
+                          _isHovering[1] = value;
+                        });
+                      },
+                      onTap: (){
+                        setState(() {
+                          _authenticationFormController.updateIsLogIn(false);
+                          _scaffoldKey.currentState!.openEndDrawer();
+                        });
+                      },
+                      child: Text(
+                        'Sign Up',
+                        style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 16,
+                            fontWeight: FontWeight.bold
+                        ),
                       ),
                     ),
-                    GettingStartedInfoTemplate(
-                      image: 'assets/images/mobile-app.jpg',
-                      title: 'Try the App',
-                      description: 'As a delivery driver you\'ll be making reliable money- working anytime, anywhere' ,
-                      buttonTitle: 'Get the App',
-                      onPressed: (){},
-                    ),
+                    Container(
+                      margin: EdgeInsets.only(top: 10),
+                      child: Visibility(
+                        maintainAnimation: true,
+                        maintainState: true,
+                        maintainSize: true,
+                        visible: _isHovering[1],
+                        child: Container(
+                          height: 2,
+                          width: 40,
+                          color: Colors.white,
+                        ),
+                      ),
+                    )
                   ],
                 ),
               ),
-              Footer(),
             ],
           ),
+        ),
+      ),
+      
+      body: SingleChildScrollView(
+        child: Container(
+          height: MediaQuery.of(context).size.height,
+          child: Column(
+            children: [
+                      Container(
+                        child: Stack(
+                          children: [
+                            Container(
+                              child: Image.asset('assets/images/hero.jpg', fit: BoxFit.cover,),
+                              height: MediaQuery.of(context).size.height * 0.45,
+                              width: MediaQuery.of(context).size.width,
+                            ),
+                            Center(
+                              child: Container(
+                                // margin: EdgeInsets.all(10),
+                                child: Column(
+                                  children: [
+                                    Container(
+                                      margin: EdgeInsets.only(top: 120),
+                                      child: Text(
+                                        text!,
+                                        style: TextStyle(
+                                          fontSize: 40,
+                                          color: Colors.white,
+                                        ),
+                                      ),
+                                    ),
+                                    Container(
+                                      margin: EdgeInsets.only(top: 30),
+                                      child: Text(
+                                        'Order food from favourite Chefs near you.',
+                                        style: TextStyle(
+                                          fontSize: 30,
+                                          color: Colors.white70,
+                                        ),
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                      Expanded(
+                        child: Container(
+                          margin: EdgeInsets.symmetric( vertical: 50),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceAround,
+                            children: [
+                              GettingStartedInfoTemplate(
+                                image: 'assets/images/food-delivery.jpg',
+                                title: 'Become a Delivery driver',
+                                description: 'As a delivery driver you\'ll be making reliable money- working anytime, anywhere' ,
+                                buttonTitle: 'Start earning',
+                                onPressed: (){},
+                              ),
+                              Container(
+                                child: GettingStartedInfoTemplate(
+                                  image: 'assets/images/kitchen.jpg',
+                                  title: 'Become a Partner',
+                                  description: 'As a delivery driver you\'ll be making reliable money- working anytime, anywhere' ,
+                                  buttonTitle: 'Sign up your kitchen',
+                                  onPressed: (){},
+                                ),
+                              ),
+                              GettingStartedInfoTemplate(
+                                image: 'assets/images/mobile-app.jpg',
+                                title: 'Try the App',
+                                description: 'As a delivery driver you\'ll be making reliable money- working anytime, anywhere' ,
+                                buttonTitle: 'Get the App',
+                                onPressed: (){},
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                      Footer()
+            ],
+            ),
         ),
       ),
       endDrawer: Container(
