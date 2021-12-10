@@ -8,7 +8,7 @@ class ConfirmDialogBox extends StatelessWidget {
   Widget build(BuildContext context) {
     ThemeData theme = Theme.of(context);
     return AlertDialog(
-      title:  const Text("Confirm ?"),
+      title:  const Text("I'm a Wimp ?"),
       titleTextStyle: theme.dialogTheme.titleTextStyle,
       backgroundColor: theme.dialogTheme.backgroundColor,
       elevation: theme.dialogTheme.elevation,
@@ -19,6 +19,19 @@ class ConfirmDialogBox extends StatelessWidget {
           onPressed: onPressedFunction,
           child:  Text('yes' , style: theme.dialogTheme.contentTextStyle, ),
           style:  ButtonStyle(
+              side: MaterialStateProperty.all(
+                  BorderSide(
+                      color: theme.dialogTheme.contentTextStyle!.color!
+                  ))
+          ),
+        ),
+        TextButton(
+          onPressed: (){
+            Navigator.pop(context);
+          },
+          child:  Text('No' , style: TextStyle(color: theme.primaryColor), ),
+          style:  ButtonStyle(
+            backgroundColor: MaterialStateProperty.all(theme.iconTheme.color?.withOpacity(0.8)),
               side: MaterialStateProperty.all(
                   BorderSide(
                       color: theme.dialogTheme.contentTextStyle!.color!
